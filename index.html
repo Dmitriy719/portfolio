@@ -26,12 +26,20 @@
             background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         .bento-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
         .bento-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
         }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
@@ -39,6 +47,41 @@
         }
         .glow {
             animation: pulse-glow 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            padding: 2px;
+            border-radius: 1.5rem;
+        }
+        .gradient-border > div {
+            background: #0f172a;
+            border-radius: 1.4rem;
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
         }
     </style>
 </head>
@@ -49,10 +92,22 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white tracking-tighter">&lt;Dev /&gt;</a>
             <div class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#about" class="hover:text-primary transition-colors">Обо мне</a>
-                <a href="#services" class="hover:text-primary transition-colors">Услуги</a>
-                <a href="#portfolio" class="hover:text-primary transition-colors">Работы</a>
-                <a href="#blog" class="hover:text-primary transition-colors">Блог</a>
+                <a href="#about" class="hover:text-primary transition-colors relative group">
+                    Обо мне
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="hover:text-primary transition-colors relative group">
+                    Услуги
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#portfolio" class="hover:text-primary transition-colors relative group">
+                    Работы
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#blog" class="hover:text-primary transition-colors relative group">
+                    Блог
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
                 <a href="#contact" class="px-4 py-2 bg-primary/10 border border-primary/30 rounded-lg hover:bg-primary/20 transition">Связаться</a>
             </div>
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white p-2">
@@ -71,15 +126,16 @@
     <!-- HERO: Bento Grid -->
     <section class="min-h-screen pt-24 pb-12 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20 glow">
+            <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20 glow fade-in">
                 🟢 Открыт для новых проектов
             </div>
             
             <div class="grid md:grid-cols-6 gap-4 auto-rows-[minmax(120px,auto)]">
                 
                 <!-- Главная карточка -->
-                <div class="md:col-span-4 md:row-span-2 bento-card p-8 md:p-10 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+                <div class="md:col-span-4 md:row-span-2 bento-card p-8 md:p-10 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden fade-in">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl float-animation"></div>
+                    <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl float-animation" style="animation-delay: 2s;"></div>
                     <div class="relative">
                         <p class="text-primary text-sm font-semibold mb-3 tracking-wider">// HELLO WORLD</p>
                         <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
@@ -89,7 +145,7 @@
                             Fullstack-разработчик. Превращаю идеи в быстрые сайты, удобные веб-приложения, умных ботов и ИИ-решения.
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <a href="#portfolio" class="px-6 py-3 bg-primary hover:bg-indigo-600 text-white font-semibold rounded-xl transition shadow-lg shadow-primary/25">
+                            <a href="#portfolio" class="px-6 py-3 bg-primary hover:bg-indigo-600 text-white font-semibold rounded-xl transition shadow-lg shadow-primary/25 hover:shadow-primary/40">
                                 Мои работы →
                             </a>
                             <a href="#contact" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition">
@@ -100,34 +156,34 @@
                 </div>
 
                 <!-- Статистика: Проекты -->
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center fade-in">
                     <div class="text-5xl font-extrabold gradient-text mb-2">50+</div>
                     <div class="text-sm text-slate-400">Завершённых проектов</div>
                 </div>
 
                 <!-- Статистика: Опыт -->
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center fade-in">
                     <div class="text-5xl font-extrabold gradient-text mb-2">5+</div>
                     <div class="text-sm text-slate-400">Лет в разработке</div>
                 </div>
 
                 <!-- Стек технологий -->
-                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <h3 class="text-sm font-semibold text-slate-500 mb-4 tracking-wider">СТЕК ТЕХНОЛОГИЙ</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">JavaScript</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">Python</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">React</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">Node.js</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">PostgreSQL</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">Tailwind</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">TensorFlow</span>
-                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">PyTorch</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">JavaScript</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">Python</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">React</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">Node.js</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">PostgreSQL</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">Tailwind</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">TensorFlow</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:border-primary/50 transition">PyTorch</span>
                     </div>
                 </div>
 
                 <!-- Статус -->
-                <div class="md:col-span-3 bento-card p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl">
+                <div class="md:col-span-3 bento-card p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl fade-in">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                         <span class="text-xs font-semibold text-green-400 tracking-wider">ДОСТУПЕН</span>
@@ -138,18 +194,17 @@
         </div>
     </section>
 
-
     <!-- ОБО МНЕ -->
     <section id="about" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// ОБО МНЕ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Немного о себе</h2>
             </div>
             <div class="grid md:grid-cols-6 gap-4">
                 
                 <!-- Главный блок: Мой путь -->
-                <div class="md:col-span-4 bento-card p-8 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden">
+                <div class="md:col-span-4 bento-card p-8 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden fade-in">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
                     <div class="relative">
                         <p class="text-primary text-sm font-semibold mb-3 tracking-wider">// MY STORY</p>
@@ -164,14 +219,14 @@
                 </div>
 
                 <!-- Опыт -->
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center fade-in">
                     <div class="text-5xl font-extrabold gradient-text mb-2">5+</div>
                     <div class="text-sm text-slate-400 mb-3">лет в разработке</div>
                     <div class="text-xs text-slate-500">Постоянно учусь новому</div>
                 </div>
 
                 <!-- Подход -->
-                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">🎯</div>
                     <h3 class="text-lg font-bold text-white mb-2">Мой подход</h3>
                     <ul class="space-y-2 text-sm text-slate-400">
@@ -183,7 +238,7 @@
                 </div>
 
                 <!-- Специализация -->
-                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+                <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">⚡</div>
                     <h3 class="text-lg font-bold text-white mb-2">Специализация</h3>
                     <div class="flex flex-wrap gap-2">
@@ -196,21 +251,21 @@
                 </div>
 
                 <!-- Что меня драйвит -->
-                <div class="md:col-span-2 bento-card p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl">
+                <div class="md:col-span-2 bento-card p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">🚀</div>
                     <h3 class="text-lg font-bold text-white mb-2">Драйвит</h3>
                     <p class="text-sm text-slate-400">Сложные задачи, новые технологии, довольные клиенты</p>
                 </div>
 
                 <!-- Образование -->
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">🎓</div>
                     <h3 class="text-lg font-bold text-white mb-2">Обучение</h3>
                     <p class="text-sm text-slate-400">Самообразование + курсы + реальная практика на проектах</p>
                 </div>
 
                 <!-- Вне работы -->
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">☕</div>
                     <h3 class="text-lg font-bold text-white mb-2">Вне кода</h3>
                     <p class="text-sm text-slate-400">Кофе, книги, спорт, новые гаджеты</p>
@@ -220,14 +275,14 @@
     </section>
 
     <!-- УСЛУГИ -->
-    <section id="services" class="py-24 px-4">
+    <section id="services" class="py-24 px-4 bg-dark/50">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// УСЛУГИ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Что я делаю</h2>
             </div>
             <div class="grid md:grid-cols-6 gap-4">
-                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🌐</div>
                     <h3 class="text-2xl font-bold text-white mb-3">Сайты под ключ</h3>
                     <p class="text-slate-400 leading-relaxed mb-4">Лендинги, корпоративные сайты, интернет-магазины. Адаптивная вёрстка, SEO, высокая скорость загрузки.</p>
@@ -237,7 +292,7 @@
                         <li>✓ SEO-оптимизация</li>
                     </ul>
                 </div>
-                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">⚡</div>
                     <h3 class="text-2xl font-bold text-white mb-3">Веб-приложения</h3>
                     <p class="text-slate-400 leading-relaxed mb-4">SPA, админ-панели, CRM, личные кабинеты. Современный стек, чистый код, масштабируемая архитектура.</p>
@@ -251,17 +306,16 @@
         </div>
     </section>
 
-    <!-- НОВАЯ СЕКЦИЯ: АВТОМАТИЗАЦИЯ И ИИ -->
-    <section id="ai-automation" class="py-24 px-4 bg-dark/50">
+    <!-- АВТОМАТИЗАЦИЯ И ИИ -->
+    <section id="ai-automation" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// ИННОВАЦИИ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Автоматизация и ИИ</h2>
                 <p class="text-slate-400 text-lg mt-4">Превращаю рутину в автоматизированные процессы, а данные — в умные решения</p>
             </div>
             <div class="grid md:grid-cols-6 gap-4">
-                <!-- Автоматизация бизнеса -->
-                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🏢</div>
                     <h3 class="text-2xl font-bold text-white mb-3">Автоматизация бизнеса</h3>
                     <p class="text-slate-400 leading-relaxed mb-4">Оптимизация бизнес-процессов, интеграция CRM, ERP, автоматизация документооборота и отчётности.</p>
@@ -272,8 +326,7 @@
                     </ul>
                 </div>
 
-                <!-- Автоматизация рутины -->
-                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🤖</div>
                     <h3 class="text-2xl font-bold text-white mb-3">Автоматизация рутины</h3>
                     <p class="text-slate-400 leading-relaxed mb-4">Telegram-боты, парсеры данных, скрипты для обработки файлов, email-рассылки, мониторинг.</p>
@@ -284,8 +337,7 @@
                     </ul>
                 </div>
 
-                <!-- Аналитика данных -->
-                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-3xl hover:border-blue-500/50 transition group">
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-3xl hover:border-blue-500/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">📊</div>
                     <h3 class="text-xl font-bold text-white mb-3">Аналитика данных</h3>
                     <p class="text-slate-400 text-sm">Дашборды, визуализация, BI-системы, прогнозирование на основе данных.</p>
@@ -295,8 +347,7 @@
                     </div>
                 </div>
 
-                <!-- ИИ решения -->
-                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-3xl hover:border-purple-500/50 transition group">
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-3xl hover:border-purple-500/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🧠</div>
                     <h3 class="text-xl font-bold text-white mb-3">ИИ решения</h3>
                     <p class="text-slate-400 text-sm">Интеграция ChatGPT, Claude, создание кастомных ИИ-ассистентов, обработка текста и изображений.</p>
@@ -306,8 +357,7 @@
                     </div>
                 </div>
 
-                <!-- Machine Learning -->
-                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 rounded-3xl hover:border-emerald-500/50 transition group">
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 rounded-3xl hover:border-emerald-500/50 transition group fade-in">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🔬</div>
                     <h3 class="text-xl font-bold text-white mb-3">Machine Learning</h3>
                     <p class="text-slate-400 text-sm">Обучение моделей, классификация, предсказания, компьютерное зрение, NLP.</p>
@@ -321,16 +371,17 @@
     </section>
 
     <!-- ПОРТФОЛИО -->
-    <section id="portfolio" class="py-24 px-4">
+    <section id="portfolio" class="py-24 px-4 bg-dark/50">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// ПОРТФОЛИО</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Избранные работы</h2>
             </div>
             <div class="grid md:grid-cols-6 gap-4">
-                <div class="md:col-span-4 bento-card group relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 hover:border-primary/50 transition">
-                    <div class="h-56 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center">
-                        <span class="text-7xl group-hover:scale-110 transition duration-500">📊</span>
+                <div class="md:col-span-4 bento-card group relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 hover:border-primary/50 transition fade-in">
+                    <div class="h-56 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 shimmer"></div>
+                        <span class="text-7xl group-hover:scale-110 transition duration-500 relative z-10">📊</span>
                     </div>
                     <div class="p-6">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">ВЕБ-ПРИЛОЖЕНИЕ</div>
@@ -343,7 +394,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition flex flex-col justify-between">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition flex flex-col justify-between fade-in">
                     <div>
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">E-COMMERCE</div>
                         <h3 class="text-xl font-bold text-white mb-2">Интернет-магазин</h3>
@@ -354,7 +405,7 @@
                         <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded-full">Stripe</span>
                     </div>
                 </div>
-                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition flex flex-col justify-between">
+                <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition flex flex-col justify-between fade-in">
                     <div>
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
                         <h3 class="text-xl font-bold text-white mb-2">Telegram-бот</h3>
@@ -365,9 +416,10 @@
                         <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded-full">Aiogram</span>
                     </div>
                 </div>
-                <div class="md:col-span-4 bento-card group relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 hover:border-primary/50 transition">
-                    <div class="h-56 bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center">
-                        <span class="text-7xl group-hover:scale-110 transition duration-500">🏢</span>
+                <div class="md:col-span-4 bento-card group relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 hover:border-primary/50 transition fade-in">
+                    <div class="h-56 bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 shimmer"></div>
+                        <span class="text-7xl group-hover:scale-110 transition duration-500 relative z-10">🏢</span>
                     </div>
                     <div class="p-6">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">КОРПОРАТИВНЫЙ САЙТ</div>
@@ -385,26 +437,26 @@
     </section>
 
     <!-- БЛОГ -->
-    <section id="blog" class="py-24 px-4 bg-dark/50">
+    <section id="blog" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// БЛОГ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Делюсь опытом</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Оптимизация до 100/100</h3><p class=\'text-slate-400 leading-relaxed\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading. Разбор реальных кейсов с метриками до/после.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Оптимизация до 100/100</h3><p class=\'text-slate-400 leading-relaxed\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading. Разбор реальных кейсов с метриками до/после.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">20 АВГ 2026 • 5 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Секреты Google PageSpeed</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Разбираем реальные техники оптимизации Core Web Vitals и достижения 100 баллов.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>ИИ в бизнесе</h3><p class=\'text-slate-400 leading-relaxed\'>Как внедрить ChatGPT и другие ИИ-решения в рабочие процессы. Практические примеры автоматизации рутины и повышения эффективности.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>ИИ в бизнесе</h3><p class=\'text-slate-400 leading-relaxed\'>Как внедрить ChatGPT и другие ИИ-решения в рабочие процессы. Практические примеры автоматизации рутины и повышения эффективности.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">15 АВГ 2026 • 8 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">ИИ для бизнеса</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Практическое руководство по внедрению ИИ в рабочие процессы.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Автоматизация рутины</h3><p class=\'text-slate-400 leading-relaxed\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц. Пошаговый гайд с примерами кода.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Автоматизация рутины</h3><p class=\'text-slate-400 leading-relaxed\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц. Пошаговый гайд с примерами кода.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">10 АВГ 2026 • 6 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Автоматизация за 1 час</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Кейс: создание бота для сбора заявок с сайта.</p>
@@ -415,14 +467,14 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-24 px-4">
+    <section id="faq" class="py-24 px-4 bg-dark/50">
         <div class="max-w-4xl mx-auto">
-            <div class="mb-12">
+            <div class="mb-12 fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// FAQ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Частые вопросы</h2>
             </div>
             <div class="space-y-3">
-                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
                     <button @click="faqActive === 1 ? faqActive = null : faqActive = 1" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>📋 Сколько времени занимает разработка?</span>
                         <span x-text="faqActive === 1 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
@@ -431,7 +483,7 @@
                         Лендинг — 3-5 дней. Корпоративный сайт — 1-2 недели. Сложные веб-приложения и ИИ-решения обсуждаются индивидуально после составления ТЗ.
                     </div>
                 </div>
-                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
                     <button @click="faqActive === 2 ? faqActive = null : faqActive = 2" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>✅ Что входит в чек-лист запуска?</span>
                         <span x-text="faqActive === 2 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
@@ -445,7 +497,7 @@
                         6. Поддержка после запуска.
                     </div>
                 </div>
-                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
                     <button @click="faqActive === 3 ? faqActive = null : faqActive = 3" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>💰 Как формируется стоимость?</span>
                         <span x-text="faqActive === 3 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
@@ -454,7 +506,7 @@
                         Стоимость зависит от сложности функционала, срочности и необходимости интеграции со сторонними сервисами (CRM, платёжные системы, API). Точную цену называю после обсуждения ТЗ.
                     </div>
                 </div>
-                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
                     <button @click="faqActive === 4 ? faqActive = null : faqActive = 4" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>🧠 Работаете ли вы с ИИ и ML?</span>
                         <span x-text="faqActive === 4 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
@@ -468,15 +520,15 @@
     </section>
 
     <!-- КОНТАКТЫ -->
-    <section id="contact" class="py-24 px-4 bg-dark/50">
+    <section id="contact" class="py-24 px-4">
         <div class="max-w-4xl mx-auto">
-            <div class="mb-12 text-center">
+            <div class="mb-12 text-center fade-in">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// КОНТАКТЫ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Давайте работать вместе</h2>
                 <p class="text-slate-400 text-lg">Опишите задачу — отвечу в течение 24 часов.</p>
             </div>
             <div class="grid md:grid-cols-5 gap-4">
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="md:col-span-3 bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-4">
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="md:col-span-3 bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-4 fade-in">
                     <div>
                         <label class="block text-sm font-medium text-slate-300 mb-2">Ваше имя</label>
                         <input type="text" name="name" required class="w-full px-4 py-3 bg-darker border border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition">
@@ -489,22 +541,22 @@
                         <label class="block text-sm font-medium text-slate-300 mb-2">Описание проекта</label>
                         <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-darker border border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition"></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3.5 bg-primary hover:bg-indigo-600 text-white font-semibold rounded-xl transition shadow-lg shadow-primary/25">
+                    <button type="submit" class="w-full py-3.5 bg-primary hover:bg-indigo-600 text-white font-semibold rounded-xl transition shadow-lg shadow-primary/25 hover:shadow-primary/40">
                         Отправить заявку →
                     </button>
                 </form>
                 <div class="md:col-span-2 space-y-4">
-                    <a href="https://t.me/username" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition">
+                    <a href="https://t.me/username" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition fade-in">
                         <div class="text-2xl mb-2">💬</div>
                         <div class="text-sm text-slate-500 mb-1">TELEGRAM</div>
                         <div class="text-white font-semibold">@username</div>
                     </a>
-                    <a href="mailto:mail@example.com" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition">
+                    <a href="mailto:mail@example.com" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition fade-in">
                         <div class="text-2xl mb-2">📧</div>
                         <div class="text-sm text-slate-500 mb-1">EMAIL</div>
                         <div class="text-white font-semibold">mail@example.com</div>
                     </a>
-                    <a href="https://github.com/Dmitriy719" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition">
+                    <a href="https://github.com/Dmitriy719" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition fade-in">
                         <div class="text-2xl mb-2">🐙</div>
                         <div class="text-sm text-slate-500 mb-1">GITHUB</div>
                         <div class="text-white font-semibold">Dmitriy719</div>
@@ -529,6 +581,19 @@
             <div x-html="modalContent" class="text-slate-200"></div>
         </div>
     </div>
+
+    <script>
+        // Intersection Observer для анимаций появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
