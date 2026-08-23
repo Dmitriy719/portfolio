@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmitriy | Fullstack Разработчик</title>
-    <meta name="description" content="Создаю сайты, веб-приложения и Telegram-ботов. Индивидуальный подход, современные технологии.">
+    <meta name="description" content="Создаю сайты, веб-приложения, Telegram-ботов, автоматизацию и ИИ-решения.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     <script>
@@ -27,22 +27,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .gradient-border {
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            padding: 1px;
-        }
         .bento-card {
             transition: all 0.3s ease;
         }
         .bento-card:hover {
             transform: translateY(-4px);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
         }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
@@ -53,7 +42,7 @@
         }
     </style>
 </head>
-<body class="bg-darker text-slate-200 font-sans antialiased" x-data="{ mobileMenuOpen: false, modalOpen: false, modalContent: \'\', faqActive: null }">
+<body class="bg-darker text-slate-200 font-sans antialiased" x-data="{ mobileMenuOpen: false, modalOpen: false, modalContent: '', faqActive: null }">
 
     <!-- Навигация -->
     <nav class="fixed w-full bg-darker/80 backdrop-blur-xl border-b border-slate-800/50 z-50">
@@ -88,7 +77,7 @@
             
             <div class="grid md:grid-cols-6 gap-4 auto-rows-[minmax(120px,auto)]">
                 
-                <!-- Главная карточка: Приветствие (занимает 4 колонки) -->
+                <!-- Главная карточка -->
                 <div class="md:col-span-4 md:row-span-2 bento-card p-8 md:p-10 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
                     <div class="relative">
@@ -97,7 +86,7 @@
                             Привет, я <span class="gradient-text">Дмитрий</span>
                         </h1>
                         <p class="text-lg md:text-xl text-slate-400 mb-6 max-w-xl">
-                            Fullstack-разработчик. Превращаю идеи в быстрые сайты, удобные веб-приложения и умных ботов.
+                            Fullstack-разработчик. Превращаю идеи в быстрые сайты, удобные веб-приложения, умных ботов и ИИ-решения.
                         </p>
                         <div class="flex flex-wrap gap-3">
                             <a href="#portfolio" class="px-6 py-3 bg-primary hover:bg-indigo-600 text-white font-semibold rounded-xl transition shadow-lg shadow-primary/25">
@@ -132,6 +121,8 @@
                         <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">Node.js</span>
                         <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">PostgreSQL</span>
                         <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">Tailwind</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">TensorFlow</span>
+                        <span class="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded-lg border border-slate-700">PyTorch</span>
                     </div>
                 </div>
 
@@ -147,7 +138,7 @@
         </div>
     </section>
 
-    <!-- УСЛУГИ: Bento -->
+    <!-- УСЛУГИ -->
     <section id="services" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12">
@@ -175,27 +166,81 @@
                         <li>✓ Интеграции с API</li>
                     </ul>
                 </div>
-                <div class="md:col-span-2 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВАЯ СЕКЦИЯ: АВТОМАТИЗАЦИЯ И ИИ -->
+    <section id="ai-automation" class="py-24 px-4 bg-dark/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-12">
+                <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// ИННОВАЦИИ</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white">Автоматизация и ИИ</h2>
+                <p class="text-slate-400 text-lg mt-4">Превращаю рутину в автоматизированные процессы, а данные — в умные решения</p>
+            </div>
+            <div class="grid md:grid-cols-6 gap-4">
+                <!-- Автоматизация бизнеса -->
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🏢</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Автоматизация бизнеса</h3>
+                    <p class="text-slate-400 leading-relaxed mb-4">Оптимизация бизнес-процессов, интеграция CRM, ERP, автоматизация документооборота и отчётности.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li>✓ Интеграция с 1С, Bitrix24, AmoCRM</li>
+                        <li>✓ Автоматические отчёты</li>
+                        <li>✓ Экономия до 40% времени</li>
+                    </ul>
+                </div>
+
+                <!-- Автоматизация рутины -->
+                <div class="md:col-span-3 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition">🤖</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Telegram-боты</h3>
-                    <p class="text-slate-400 text-sm">Автоматизация, приём заказов, рассылки, интеграции.</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Автоматизация рутины</h3>
+                    <p class="text-slate-400 leading-relaxed mb-4">Telegram-боты, парсеры данных, скрипты для обработки файлов, email-рассылки, мониторинг.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li>✓ Парсинг сайтов и API</li>
+                        <li>✓ Обработка данных (Excel, CSV, JSON)</li>
+                        <li>✓ Уведомления и алерты</li>
+                    </ul>
                 </div>
-                <div class="md:col-span-2 bento-card p-8 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition group">
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🔧</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Парсеры и API</h3>
-                    <p class="text-slate-400 text-sm">Сбор данных, интеграции, автоматизация рутины.</p>
+
+                <!-- Аналитика данных -->
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-3xl hover:border-blue-500/50 transition group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">📊</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Аналитика данных</h3>
+                    <p class="text-slate-400 text-sm">Дашборды, визуализация, BI-системы, прогнозирование на основе данных.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">Pandas</span>
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">Plotly</span>
+                    </div>
                 </div>
-                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl flex flex-col justify-center">
-                    <h3 class="text-xl font-bold text-white mb-2">Нужно что-то другое?</h3>
-                    <p class="text-slate-400 text-sm mb-4">Напишите — обсудим вашу задачу.</p>
-                    <a href="#contact" class="text-primary font-semibold text-sm hover:underline">Связаться →</a>
+
+                <!-- ИИ решения -->
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-3xl hover:border-purple-500/50 transition group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🧠</div>
+                    <h3 class="text-xl font-bold text-white mb-3">ИИ решения</h3>
+                    <p class="text-slate-400 text-sm">Интеграция ChatGPT, Claude, создание кастомных ИИ-ассистентов, обработка текста и изображений.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">OpenAI</span>
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">LangChain</span>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 rounded-3xl hover:border-emerald-500/50 transition group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🔬</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Machine Learning</h3>
+                    <p class="text-slate-400 text-sm">Обучение моделей, классификация, предсказания, компьютерное зрение, NLP.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">TensorFlow</span>
+                        <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded">PyTorch</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ПОРТФОЛИО -->
-    <section id="portfolio" class="py-24 px-4 bg-dark/50">
+    <section id="portfolio" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// ПОРТФОЛИО</p>
@@ -259,26 +304,26 @@
     </section>
 
     <!-- БЛОГ -->
-    <section id="blog" class="py-24 px-4">
+    <section id="blog" class="py-24 px-4 bg-dark/50">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// БЛОГ</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Делюсь опытом</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = \'<h3 class=\\\'text-2xl font-bold mb-3 text-white\\\'>Оптимизация до 100/100</h3><p class=\\\'text-slate-400 leading-relaxed\\\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading. Разбор реальных кейсов с метриками до/после.</p>\'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Оптимизация до 100/100</h3><p class=\'text-slate-400 leading-relaxed\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading. Разбор реальных кейсов с метриками до/после.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">20 АВГ 2026 • 5 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Секреты Google PageSpeed</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Разбираем реальные техники оптимизации Core Web Vitals и достижения 100 баллов.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = \'<h3 class=\\\'text-2xl font-bold mb-3 text-white\\\'>HTML vs Фреймворки</h3><p class=\\\'text-slate-400 leading-relaxed\\\'>Почему для лендингов часто лучше подходит чистый HTML+JS, а не тяжелые фреймворки. Сравнение скорости загрузки, сложности поддержки и SEO.</p>\'">
-                    <div class="text-xs text-primary font-semibold mb-3 tracking-wider">15 АВГ 2026 • 7 МИН</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Zero-Build подход</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Когда стоит использовать чистый HTML вместо React и Vue.</p>
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>ИИ в бизнесе</h3><p class=\'text-slate-400 leading-relaxed\'>Как внедрить ChatGPT и другие ИИ-решения в рабочие процессы. Практические примеры автоматизации рутины и повышения эффективности.</p>'">
+                    <div class="text-xs text-primary font-semibold mb-3 tracking-wider">15 АВГ 2026 • 8 МИН</div>
+                    <h3 class="text-xl font-bold text-white mb-3">ИИ для бизнеса</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Практическое руководство по внедрению ИИ в рабочие процессы.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = \'<h3 class=\\\'text-2xl font-bold mb-3 text-white\\\'>Автоматизация рутины</h3><p class=\\\'text-slate-400 leading-relaxed\\\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц. Пошаговый гайд с примерами кода.</p>\'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Автоматизация рутины</h3><p class=\'text-slate-400 leading-relaxed\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц. Пошаговый гайд с примерами кода.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">10 АВГ 2026 • 6 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Автоматизация за 1 час</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Кейс: создание бота для сбора заявок с сайта.</p>
@@ -289,7 +334,7 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-24 px-4 bg-dark/50">
+    <section id="faq" class="py-24 px-4">
         <div class="max-w-4xl mx-auto">
             <div class="mb-12">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// FAQ</p>
@@ -299,16 +344,16 @@
                 <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
                     <button @click="faqActive === 1 ? faqActive = null : faqActive = 1" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>📋 Сколько времени занимает разработка?</span>
-                        <span x-text="faqActive === 1 ? \'−\' : \'+\'" class="text-2xl text-primary font-bold transition-transform" :class="faqActive === 1 && \'rotate-180\'"></span>
+                        <span x-text="faqActive === 1 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
                     </button>
                     <div x-show="faqActive === 1" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
-                        Лендинг — 3-5 дней. Корпоративный сайт — 1-2 недели. Сложные веб-приложения и боты обсуждаются индивидуально после составления ТЗ.
+                        Лендинг — 3-5 дней. Корпоративный сайт — 1-2 недели. Сложные веб-приложения и ИИ-решения обсуждаются индивидуально после составления ТЗ.
                     </div>
                 </div>
                 <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
                     <button @click="faqActive === 2 ? faqActive = null : faqActive = 2" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>✅ Что входит в чек-лист запуска?</span>
-                        <span x-text="faqActive === 2 ? \'−\' : \'+\'" class="text-2xl text-primary font-bold"></span>
+                        <span x-text="faqActive === 2 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
                     </button>
                     <div x-show="faqActive === 2" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
                         1. Анализ требований и ТЗ.<br>
@@ -322,7 +367,7 @@
                 <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
                     <button @click="faqActive === 3 ? faqActive = null : faqActive = 3" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
                         <span>💰 Как формируется стоимость?</span>
-                        <span x-text="faqActive === 3 ? \'−\' : \'+\'" class="text-2xl text-primary font-bold"></span>
+                        <span x-text="faqActive === 3 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
                     </button>
                     <div x-show="faqActive === 3" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
                         Стоимость зависит от сложности функционала, срочности и необходимости интеграции со сторонними сервисами (CRM, платёжные системы, API). Точную цену называю после обсуждения ТЗ.
@@ -330,11 +375,11 @@
                 </div>
                 <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition">
                     <button @click="faqActive === 4 ? faqActive = null : faqActive = 4" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
-                        <span>🛠 Даёте ли поддержку после запуска?</span>
-                        <span x-text="faqActive === 4 ? \'−\' : \'+\'" class="text-2xl text-primary font-bold"></span>
+                        <span>🧠 Работаете ли вы с ИИ и ML?</span>
+                        <span x-text="faqActive === 4 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
                     </button>
                     <div x-show="faqActive === 4" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
-                        Да, предоставляю 30 дней бесплатной поддержки после запуска. Далее — по договорённости (помесячная подписка или разовые доработки).
+                        Да, интегрирую ChatGPT, Claude, создаю кастомные ИИ-ассистенты, обучаю модели для классификации, прогнозирования и обработки данных.
                     </div>
                 </div>
             </div>
@@ -342,7 +387,7 @@
     </section>
 
     <!-- КОНТАКТЫ -->
-    <section id="contact" class="py-24 px-4">
+    <section id="contact" class="py-24 px-4 bg-dark/50">
         <div class="max-w-4xl mx-auto">
             <div class="mb-12 text-center">
                 <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// КОНТАКТЫ</p>
