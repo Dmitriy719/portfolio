@@ -178,6 +178,7 @@
                 <a href="#services" class="hover:text-primary transition-colors relative group">Услуги<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#process" class="hover:text-primary transition-colors relative group">Процесс<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#portfolio" class="hover:text-primary transition-colors relative group">Работы<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+                <a href="#changelog" class="hover:text-primary transition-colors relative group">Обновления<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#contact" class="ripple-btn px-4 py-2 bg-primary/10 border border-primary/30 rounded-lg hover:bg-primary/20 transition">Связаться</a>
             </div>
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white p-2">
@@ -613,19 +614,19 @@
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Делюсь опытом</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Оптимизация до 100/100</h3><p class=\'text-slate-400 leading-relaxed\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading. Разбор реальных кейсов с метриками до/после.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Оптимизация до 100/100</h3><p class=\'text-slate-400 leading-relaxed mb-4\'>Как я ускоряю загрузку сайтов: от сжатия изображений до настройки кэширования и lazy-loading.</p><h4 class=\'text-lg font-bold text-white mb-2\'>Основные техники:</h4><ul class=\'text-slate-400 space-y-2 mb-4\'><li>✓ Сжатие изображений через WebP и AVIF</li><li>✓ Lazy-loading для медиа-контента</li><li>✓ Минификация CSS/JS</li><li>✓ Настройка кэширования на CDN</li><li>✓ Critical CSS для above-the-fold контента</li></ul><h4 class=\'text-lg font-bold text-white mb-2\'>Результаты:</h4><p class=\'text-slate-400\'>Средний показатель: улучшение Core Web Vitals на 60-80%. Время загрузки сокращается с 4-5 секунд до 1-2 секунд.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">20 АВГ 2026 • 5 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Секреты Google PageSpeed</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Разбираем реальные техники оптимизации Core Web Vitals и достижения 100 баллов.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>ИИ в бизнесе</h3><p class=\'text-slate-400 leading-relaxed\'>Как внедрить ChatGPT и другие ИИ-решения в рабочие процессы. Практические примеры автоматизации рутины и повышения эффективности.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>ИИ в бизнесе</h3><p class=\'text-slate-400 leading-relaxed mb-4\'>Как внедрить ChatGPT и другие ИИ-решения в рабочие процессы.</p><h4 class=\'text-lg font-bold text-white mb-2\'>Кейсы внедрения:</h4><ul class=\'text-slate-400 space-y-2 mb-4\'><li>✓ Автоматическая обработка заявок клиентов</li><li>✓ Генерация контента для соцсетей</li><li>✓ Анализ отзывов и обратной связи</li><li>✓ Создание чат-ботов с ИИ</li><li>✓ Автоматизация документооборота</li></ul><h4 class=\'text-lg font-bold text-white mb-2\'>Технологии:</h4><p class=\'text-slate-400\'>OpenAI API, LangChain, кастомные промпты, интеграция с CRM и мессенджерами.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">15 АВГ 2026 • 8 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">ИИ для бизнеса</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Практическое руководство по внедрению ИИ в рабочие процессы.</p>
                     <div class="mt-4 text-primary text-sm font-semibold">Читать →</div>
                 </article>
-                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Автоматизация рутины</h3><p class=\'text-slate-400 leading-relaxed\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц. Пошаговый гайд с примерами кода.</p>'">
+                <article class="bento-card bg-slate-900 border border-slate-800 rounded-3xl p-6 hover:border-primary/50 transition cursor-pointer fade-in" @click="modalOpen = true; modalContent = '<h3 class=\'text-2xl font-bold mb-3 text-white\'>Автоматизация рутины</h3><p class=\'text-slate-400 leading-relaxed mb-4\'>Как простые Python-скрипты и Telegram-боты экономят бизнесу десятки часов в месяц.</p><h4 class=\'text-lg font-bold text-white mb-2\'>Что можно автоматизировать:</h4><ul class=\'text-slate-400 space-y-2 mb-4\'><li>✓ Сбор данных с сайтов (парсинг)</li><li>✓ Обработка Excel/CSV файлов</li><li>✓ Автоматические рассылки</li><li>✓ Мониторинг изменений на сайтах</li><li>✓ Генерация отчётов</li></ul><h4 class=\'text-lg font-bold text-white mb-2\'>Пример из практики:</h4><p class=\'text-slate-400\'>Создал бота для интернет-магазина: автоматически принимает заказы, отправляет уведомления менеджерам, интегрируется с CRM. Экономия: 25 часов в неделю.</p>'">
                     <div class="text-xs text-primary font-semibold mb-3 tracking-wider">10 АВГ 2026 • 6 МИН</div>
                     <h3 class="text-xl font-bold text-white mb-3">Автоматизация за 1 час</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">Кейс: создание бота для сбора заявок с сайта.</p>
@@ -684,6 +685,33 @@
                         Да, интегрирую ChatGPT, Claude, создаю кастомные ИИ-ассистенты, обучаю модели для классификации, прогнозирования и обработки данных.
                     </div>
                 </div>
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
+                    <button @click="faqActive === 5 ? faqActive = null : faqActive = 5" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
+                        <span>🔐 Гарантируете ли вы конфиденциальность?</span>
+                        <span x-text="faqActive === 5 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
+                    </button>
+                    <div x-show="faqActive === 5" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
+                        Да, подписываю NDA (соглашение о неразглашении) по запросу. Все данные клиентов хранятся в зашифрованном виде, доступ к коду только у меня. После завершения проекта передаю все доступы и удаляю копии.
+                    </div>
+                </div>
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
+                    <button @click="faqActive === 6 ? faqActive = null : faqActive = 6" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
+                        <span>📱 Делаете ли вы мобильные приложения?</span>
+                        <span x-text="faqActive === 6 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
+                    </button>
+                    <div x-show="faqActive === 6" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
+                        Специализируюсь на веб-приложениях, которые работают на всех устройствах (PWA). Для нативных мобильных приложений рекомендую проверенных партнёров, с которыми могу работать в связке.
+                    </div>
+                </div>
+                <div class="border border-slate-800 rounded-2xl bg-slate-900 overflow-hidden hover:border-primary/30 transition fade-in">
+                    <button @click="faqActive === 7 ? faqActive = null : faqActive = 7" class="w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium">
+                        <span>🔄 Можно ли вносить правки после запуска?</span>
+                        <span x-text="faqActive === 7 ? '−' : '+'" class="text-2xl text-primary font-bold"></span>
+                    </button>
+                    <div x-show="faqActive === 7" x-collapse class="px-6 pb-5 text-slate-400 leading-relaxed">
+                        Конечно! После запуска предоставляю 30 дней бесплатной поддержки (исправление багов, мелкие правки). Далее — по договорённости: помечевая подписка или разовые доработки. Также обучаю вас или вашу команду самостоятельному редактированию контента.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -735,9 +763,70 @@
         </div>
     </section>
 
+
+    <!-- CHANGELOG -->
+    <section id="changelog" class="py-24 px-4 bg-dark/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12 fade-in">
+                <p class="text-primary text-sm font-semibold mb-2 tracking-wider">// CHANGELOG</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white">История обновлений</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="bento-card p-6 bg-slate-900 border border-slate-800 rounded-2xl fade-in">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-3 py-1 text-xs bg-primary/10 text-primary border border-primary/20 rounded-full font-semibold">v1.5.0</span>
+                        <span class="text-sm text-slate-500">23 августа 2026</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>✨ Добавлена секция "Процесс работы"</li>
+                        <li>✨ Добавлены отзывы клиентов</li>
+                        <li>✨ Расширен контент блога</li>
+                        <li>✨ Добавлены новые вопросы в FAQ</li>
+                        <li>✨ Улучшены анимации и интерактив</li>
+                    </ul>
+                </div>
+                <div class="bento-card p-6 bg-slate-900 border border-slate-800 rounded-2xl fade-in">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 border border-slate-700 rounded-full font-semibold">v1.4.0</span>
+                        <span class="text-sm text-slate-500">20 августа 2026</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>✨ Добавлена секция "Автоматизация и ИИ"</li>
+                        <li>✨ Добавлены прогресс-бары навыков</li>
+                        <li>✨ Улучшен дизайн Hero-секции</li>
+                    </ul>
+                </div>
+                <div class="bento-card p-6 bg-slate-900 border border-slate-800 rounded-2xl fade-in">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 border border-slate-700 rounded-full font-semibold">v1.3.0</span>
+                        <span class="text-sm text-slate-500">15 августа 2026</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>✨ Добавлена секция "Обо мне"</li>
+                        <li>✨ Добавлен блог с модальными окнами</li>
+                        <li>✨ Добавлен FAQ</li>
+                    </ul>
+                </div>
+                <div class="bento-card p-6 bg-slate-900 border border-slate-800 rounded-2xl fade-in">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 border border-slate-700 rounded-full font-semibold">v1.0.0</span>
+                        <span class="text-sm text-slate-500">10 августа 2026</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>🚀 Первый релиз сайта</li>
+                        <li>✨ Hero-секция в стиле Bento Grid</li>
+                        <li>✨ Секции услуг и портфолио</li>
+                        <li>✨ Форма обратной связи</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Футер -->
     <footer class="py-8 px-4 border-t border-slate-800 text-center text-slate-500 text-sm">
         <p>© 2026 &lt;Dev /&gt; — Создано с помощью кода и кофе ☕</p>
+        <p class="mt-2 text-xs">Версия 1.5.0 • Последнее обновление: 23 августа 2026</p>
     </footer>
 
     <!-- Кнопка наверх -->
