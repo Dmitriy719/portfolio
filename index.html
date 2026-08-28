@@ -178,6 +178,7 @@
                 <a href="#services" class="hover:text-primary transition-colors relative group">Услуги<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#process" class="hover:text-primary transition-colors relative group">Процесс<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#portfolio" class="hover:text-primary transition-colors relative group">Работы<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+                <a href="#edo" class="hover:text-orange-400 transition-colors relative group font-semibold text-orange-400">🔥 ЭДО 2026<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all group-hover:w-full"></span></a>
                 <a href="#changelog" class="hover:text-primary transition-colors relative group">Обновления<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
                 <a href="#contact" class="ripple-btn px-4 py-2 bg-primary/10 border border-primary/30 rounded-lg hover:bg-primary/20 transition">Связаться</a>
             </div>
@@ -381,6 +382,146 @@
                         <li>✓ Node.js / Python backend</li>
                         <li>✓ Интеграции с API</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 🔥 ГОРЯЧАЯ УСЛУГА: ЭДО / ЭТрН -->
+    <section id="edo" class="py-24 px-4 relative overflow-hidden">
+        <!-- Фоновые эффекты -->
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-950/20 via-red-950/10 to-darker"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <!-- Предупреждающий баннер -->
+            <div class="mb-8 p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-2xl fade-in">
+                <div class="flex items-center gap-3 flex-wrap">
+                    <span class="text-2xl">⚠️</span>
+                    <div class="flex-1">
+                        <div class="text-orange-400 font-bold text-sm tracking-wider">ВНИМАНИЕ: ЗАКОН ВСТУПАЕТ В СИЛУ</div>
+                        <div class="text-white text-lg font-semibold">С 1 сентября 2026 года бумажные ТрН запрещены</div>
+                    </div>
+                    <!-- Таймер обратного отсчёта -->
+                    <div id="countdown" class="flex gap-2 text-center">
+                        <div class="bg-darker/80 border border-orange-500/30 rounded-lg px-3 py-2 min-w-[60px]">
+                            <div id="days" class="text-2xl font-bold text-orange-400">--</div>
+                            <div class="text-xs text-slate-400">дней</div>
+                        </div>
+                        <div class="bg-darker/80 border border-orange-500/30 rounded-lg px-3 py-2 min-w-[60px]">
+                            <div id="hours" class="text-2xl font-bold text-orange-400">--</div>
+                            <div class="text-xs text-slate-400">часов</div>
+                        </div>
+                        <div class="bg-darker/80 border border-orange-500/30 rounded-lg px-3 py-2 min-w-[60px]">
+                            <div id="minutes" class="text-2xl font-bold text-orange-400">--</div>
+                            <div class="text-xs text-slate-400">минут</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Заголовок -->
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-block px-4 py-1.5 mb-4 text-xs font-bold text-orange-400 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider">
+                    🔥 АКТАУЛЬНО В 2026 ГОДУ
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                    Интеграция <span class="gradient-text">1С / CRM / сайта</span><br>
+                    с ЭДО (ЭТрН, ГИС ЭПД, Диадок, СБИС)
+                </h2>
+                <p class="text-lg text-slate-400 max-w-3xl mx-auto">
+                    Подготовка вашего бизнеса к закону 2026 года. Штраф за отсутствие ЭТрН в ГИС ЭПД — <span class="text-red-400 font-bold">до 300 000 ₽</span> за каждый рейс.
+                </p>
+            </div>
+
+            <!-- Основной контент -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Что я делаю -->
+                <div class="bento-card p-8 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-3xl hover:border-orange-500/50 transition fade-in">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-2xl font-bold text-white mb-5">Что я делаю</h3>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 text-slate-300">
+                            <span class="text-green-400 flex-shrink-0">✅</span>
+                            <span><strong class="text-white">Парсинг и валидация XML</strong> по официальным XSD-схемам ФНС/Минтранса (формат <code class="text-orange-400 bg-darker px-1.5 py-0.5 rounded text-xs">kl_trn_mt_05_01</code>)</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-300">
+                            <span class="text-green-400 flex-shrink-0">✅</span>
+                            <span><strong class="text-white">Настройка обмена титулами</strong> (Т1-Т4) между грузоотправителем, перевозчиком и получателем</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-300">
+                            <span class="text-green-400 flex-shrink-0">✅</span>
+                            <span><strong class="text-white">Интеграция с вашей учётной системой</strong> (1С, самописная CRM, веб-панель) через REST API</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-300">
+                            <span class="text-green-400 flex-shrink-0">✅</span>
+                            <span><strong class="text-white">Реализация подписания документов</strong> (в т.ч. упрощённая схема для водителей)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Почему я -->
+                <div class="bento-card p-8 bg-gradient-to-br from-orange-950/30 to-red-950/30 backdrop-blur border border-orange-500/30 rounded-3xl hover:border-orange-500/60 transition fade-in">
+                    <div class="text-4xl mb-4">💎</div>
+                    <h3 class="text-2xl font-bold text-white mb-5">Почему стоит обратиться ко мне</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="text-2xl flex-shrink-0">🚀</span>
+                            <div>
+                                <div class="text-white font-semibold">Готовый рабочий прототип (PoC)</div>
+                                <div class="text-slate-400 text-sm">Генерации и отправки ЭТрН уже разработан</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-2xl flex-shrink-0">⚡</span>
+                            <div>
+                                <div class="text-white font-semibold">Внедрение за 1-3 дня</div>
+                                <div class="text-slate-400 text-sm">Нужен только доступ к тестовому кабинету интегратора ЭДО</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-2xl flex-shrink-0">📄</span>
+                            <div>
+                                <div class="text-white font-semibold">Работаю официально</div>
+                                <div class="text-slate-400 text-sm">Самозанятость, чек, гарантийная поддержка</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Операторы ЭДО -->
+            <div class="mb-8 fade-in">
+                <div class="p-6 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-3xl">
+                    <h3 class="text-lg font-bold text-white mb-4 text-center">Работаю с операторами ЭДО:</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 Контур.Диадок</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 СБИС</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 1С-ЭДО</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 ГИС ЭПД</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 Контур.Диадок</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 СБИС</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 1С-ЭДО</span>
+                        <span class="px-4 py-2 bg-darker border border-orange-500/20 rounded-xl text-slate-300 text-sm font-medium">📦 ГИС ЭПД</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center fade-in">
+                <div class="inline-block p-8 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/40 rounded-3xl max-w-2xl">
+                    <div class="text-3xl mb-3">🎁</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">
+                        Бесплатный аудит вашей системы
+                    </h3>
+                    <p class="text-slate-300 mb-6">
+                        Напишите мне — и я бесплатно проведу аудит вашей текущей системы на готовность к переходу на ЭПД.
+                    </p>
+                    <a href="#contact" class="ripple-btn inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-xl transition shadow-lg shadow-orange-500/30 text-lg">
+                        Получить бесплатный аудит →
+                    </a>
                 </div>
             </div>
         </div>
@@ -826,7 +967,7 @@
     <!-- Футер -->
     <footer class="py-8 px-4 border-t border-slate-800 text-center text-slate-500 text-sm">
         <p>© 2026 &lt;Dev /&gt; — Создано с помощью кода и кофе ☕</p>
-        <p class="mt-2 text-xs">Версия 1.5.0 • Последнее обновление: 23 августа 2026</p>
+        <p class="mt-2 text-xs">Версия 1.6.0 • Последнее обновление: 28 августа 2026</p>
     </footer>
 
     <!-- Кнопка наверх -->
@@ -911,6 +1052,33 @@
             requestAnimationFrame(animateGlow);
         }
         animateGlow();
+
+
+        // ========== ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ДО 1 СЕНТЯБРЯ 2026 ==========
+        const targetDate = new Date('2026-09-01T00:00:00+03:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // обновляем каждую минуту
 
         // Кнопка "Наверх"
         const scrollTopBtn = document.getElementById('scrollTop');
