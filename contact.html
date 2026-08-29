@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Связаться со мной</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4">
+<div class="max-w-md w-full bg-slate-900 border border-slate-800 rounded-3xl p-8">
+<h1 class="text-3xl font-bold mb-6 text-center">Связаться со мной</h1>
+<div class="space-y-4">
+<div>
+<label class="block text-sm mb-2">Ваше имя</label>
+<input type="text" id="name" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white">
+</div>
+<div>
+<label class="block text-sm mb-2">Email или Telegram</label>
+<input type="text" id="contact" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white">
+</div>
+<div>
+<label class="block text-sm mb-2">Описание проекта</label>
+<textarea id="message" rows="4" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white"></textarea>
+</div>
+<button onclick="sendForm()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-semibold text-lg">Отправить заявку →</button>
+<div id="result" class="hidden p-4 rounded-xl text-center"></div>
+</div>
+<a href="/" class="block text-center mt-6 text-indigo-400 hover:underline">← Вернуться на сайт</a>
+</div>
+<script>
+function sendForm() {
+const name = document.getElementById('name').value.trim();
+const contact = document.getElementById('contact').value.trim();
+const message = document.getElementById('message').value.trim();
+if (!name || !contact || !message) { alert('Заполните все поля'); return; }
+const email = "Demon.osipov2011@yandex.ru";
+const subject = encodeURIComponent("Заявка: " + name);
+const body = encodeURIComponent("Имя: " + name + "\nКонтакт: " + contact + "\n\nПроект:\n" + message);
+window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
+const result = document.getElementById('result');
+result.className = "p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400";
+result.innerHTML = '<p class="font-semibold mb-2">Заявка готова!</p><p class="text-sm mb-3">Если почта не открылась, скопируйте:</p><div class="bg-slate-800 p-3 rounded text-left text-xs mb-3 font-mono">Имя: ' + name + '<br>Контакт: ' + contact + '<br><br>Проект:<br>' + message + '</div><button onclick="copyText()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm"> Скопировать</button>';
+result.classList.remove('hidden');
+}
+function copyText() {
+const name = document.getElementById('name').value;
+const contact = document.getElementById('contact').value;
+const message = document.getElementById('message').value;
+const text = "Имя: " + name + "\nКонтакт: " + contact + "\n\nПроект:\n" + message;
+navigator.clipboard.writeText(text).then(() => alert('Скопировано! Отправьте в Telegram или почту.'));
+}
+</script>
+</body>
+</html>
