@@ -1091,5 +1091,42 @@
         });
     </script>
 
+
+    <script>
+        // ========== УМНАЯ ФОРМА С КОПИРОВАНИЕМ ==========
+        function sendViaEmail() {
+            const name = document.getElementById('formName').value.trim();
+            const contact = document.getElementById('formContact').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+            const resultDiv = document.getElementById('formResult');
+            
+            if (!name || !contact || !message) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            const myEmail = "Demon.osipov2011@yandex.ru";
+            const subject = encodeURIComponent("Заявка с сайта: " + name);
+            const body = encodeURIComponent("Здравствуйте!\n\nМеня зовут: " + name + "\nМой контакт: " + contact + "\n\nОписание проекта:\n" + message + "\n\n---\nОтправлено с сайта-портфолио");
+            
+            // Открываем почтовый клиент
+            window.location.href = "mailto:" + myEmail + "?subject=" + subject + "&body=" + body;
+            
+            // Показываем данные для копирования
+            const textToCopy = "Имя: " + name + "\nКонтакт: " + contact + "\n\nПроект:\n" + message;
+            
+            resultDiv.className = "mt-4 p-4 rounded-xl text-center bg-green-500/10 border border-green-500/30 text-green-400";
+            resultDiv.innerHTML = '<p class="mb-2 font-semibold">Заявка готова!</p><p class="text-sm mb-3">Если почта не открылась, скопируйте данные:</p><div class="bg-darker p-3 rounded-lg text-left text-xs mb-3 font-mono">' + textToCopy.replace(/\n/g, '<br>') + '</div><button onclick="copyData('' + textToCopy.replace(/'/g, "\'") + '')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm">📋 Скопировать</button>';
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function copyData(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('✅ Скопировано! Отправьте эти данные в Telegram или почту.');
+            }).catch(function() {
+                alert('Не удалось скопировать автоматически. Скопируйте вручную.');
+            });
+        }
+    </script>
 </body>
 </html>
