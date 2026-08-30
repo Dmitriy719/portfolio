@@ -53,10 +53,13 @@ tailwind.config = {
         
         <div>
             <label class="block text-sm font-medium text-slate-300 mb-2">Описание проекта</label>
-            <textarea id="message" rows="4" maxlength="2000" required 
+            <textarea id="message" rows="4" maxlength="2000" required oninput="updateCounter(this)"
                 class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"
                 placeholder="Расскажите о вашем проекте..."></textarea>
-            <p class="text-xs text-slate-500 mt-1">Максимум 2000 символов</p>
+            <div class="flex justify-between items-center mt-1">
+                <p class="text-xs text-slate-500">Максимум 2000 символов</p>
+                <p id="charCounter" class="text-xs text-slate-400"><span id="currentLength">0</span>/2000</p>
+            </div>
         </div>
         
         <button type="submit" 
@@ -140,6 +143,24 @@ function copyText() {
     }).catch(() => {
         alert('Не удалось скопировать. Скопируйте вручную.');
     });
+}
+
+function updateCounter(textarea) {
+    const current = textarea.value.length;
+    const counterEl = document.getElementById('currentLength');
+    const charCounterEl = document.getElementById('charCounter');
+    
+    if (counterEl) counterEl.textContent = current;
+    
+    if (charCounterEl) {
+        if (current > 1800) {
+            charCounterEl.className = 'text-xs text-red-400 font-semibold';
+        } else if (current > 1500) {
+            charCounterEl.className = 'text-xs text-yellow-400';
+        } else {
+            charCounterEl.className = 'text-xs text-slate-400';
+        }
+    }
 }
 </script>
 
