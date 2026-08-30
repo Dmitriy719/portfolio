@@ -1,45 +1,86 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;">
-<title>Связаться со мной</title>
-<script src="https://cdn.tailwindcss.com" integrity="sha384-..." crossorigin="anonymous"></script>
-</head>
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4">
-<div class="max-w-md w-full bg-slate-900 border border-slate-800 rounded-3xl p-8">
-<h1 class="text-3xl font-bold mb-6 text-center">Связаться со мной</h1>
-<div class="space-y-4">
-<div>
-<label class="block text-sm mb-2">Ваше имя</label>
-<input type="text" id="name" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white">
-</div>
-<div>
-<label class="block text-sm mb-2">Email или Telegram</label>
-<input type="text" id="contact" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white">
-</div>
-<div>
-<label class="block text-sm mb-2">Описание проекта</label>
-<textarea id="message" rows="4" class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white"></textarea>
-</div>
-
-<div style="position:absolute;left:-9999px;" aria-hidden="true">
-    <label>Не заполняйте это поле</label>
-    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-</div>
-
-<button onclick="sendForm()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-semibold text-lg transition">Отправить заявку →</button>
-<div id="result" class="hidden p-4 rounded-xl text-center text-sm"></div>
-</div>
-<a href="./index.html" class="block text-center mt-6 text-indigo-400 hover:underline">← Вернуться на сайт</a>
-</div>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; font-src https://fonts.gstatic.com;">
+<title>Связаться со мной | Dmitriy</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
-// 1. Защита от XSS: экранирование опасных символов
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                primary: '#6366f1',
+                accent: '#a855f7',
+                dark: '#0f172a',
+                darker: '#020617'
+            }
+        }
+    }
+}
+</script>
+<style>
+[x-cloak]{display:none!important}
+</style>
+</head>
+<body class="bg-darker text-white min-h-screen flex items-center justify-center p-4">
+
+<div class="max-w-md w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+    <h1 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Связаться со мной</h1>
+    
+    <form onsubmit="event.preventDefault(); sendForm();" class="space-y-4">
+        <!-- Honeypot для защиты от ботов -->
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <label>Не заполняйте это поле</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Ваше имя</label>
+            <input type="text" id="name" maxlength="100" required 
+                class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                placeholder="Иван Иванов">
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Email или Telegram</label>
+            <input type="text" id="contact" maxlength="150" required 
+                class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                placeholder="name@domain.com или @username">
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Описание проекта</label>
+            <textarea id="message" rows="4" maxlength="2000" required 
+                class="w-full px-4 py-3 bg-slate-800 rounded-xl border border-slate-700 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"
+                placeholder="Расскажите о вашем проекте..."></textarea>
+            <p class="text-xs text-slate-500 mt-1">Максимум 2000 символов</p>
+        </div>
+        
+        <button type="submit" 
+            class="w-full py-4 bg-gradient-to-r from-primary to-accent hover:from-indigo-600 hover:to-purple-600 rounded-xl font-semibold text-lg transition shadow-lg shadow-primary/25 flex items-center justify-center gap-2">
+            <span>Отправить заявку</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+        </button>
+        
+        <div id="result" class="hidden p-4 rounded-xl text-center text-sm"></div>
+    </form>
+    
+    <a href="./index.html" class="block text-center mt-6 text-indigo-400 hover:text-indigo-300 transition">
+        ← Вернуться на сайт
+    </a>
+</div>
+
+<script>
+// 1. Защита от XSS: экранирование HTML
 function escapeHtml(text) {
     if (!text) return text;
-    return text.replace(/[&<>"'\r\n]/g, function(m) {
-        return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '\r': ' ', '\n': ' '}[m];
+    return text.replace(/[&<>"']/g, function(m) {
+        return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[m];
     });
 }
 
@@ -47,33 +88,44 @@ function sendForm() {
     const nameRaw = document.getElementById('name').value.trim();
     const contactRaw = document.getElementById('contact').value.trim();
     const messageRaw = document.getElementById('message').value.trim();
+    const result = document.getElementById('result');
     
-    // Honeypot: если бот заполнил скрытое поле - блокируем
-if (document.getElementById('website').value !== '') { return; }
-// Ограничение длины (защита от DoS)
-if (nameRaw.length > 100 || contactRaw.length > 150 || messageRaw.length > 2000) { alert('Превышена максимальная длина полей'); return; }
-if (!nameRaw || !contactRaw || !messageRaw) { alert('Пожалуйста, заполните все поля'); return; }
-// Валидация email (если это email, а не Telegram)
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const isTelegram = contactRaw.startsWith('@') || contactRaw.toLowerCase().includes('t.me/');
-if (!emailRegex.test(contactRaw) && !isTelegram) { alert('Введите корректный email (например, name@domain.com) или Telegram (@username)'); return; }
+    // 2. Honeypot: если бот заполнил скрытое поле
+    if (document.getElementById('website').value !== '') {
+        console.log('Bot detected');
+        return;
+    }
     
-    // 2. Используем очищенные данные для отображения на странице (защита от XSS)
-    const name = escapeHtml(nameRaw);
-    const contact = escapeHtml(contactRaw);
-    const message = escapeHtml(messageRaw);
+    // 3. Ограничение длины (защита от DoS)
+    if (nameRaw.length > 100 || contactRaw.length > 150 || messageRaw.length > 2000) {
+        alert('Превышена максимальная длина полей');
+        return;
+    }
+    
+    // 4. Валидация email или Telegram
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const telegramRegex = /^@[\w]{3,32}$/;
+    const isEmail = emailRegex.test(contactRaw);
+    const isTelegram = telegramRegex.test(contactRaw) || contactRaw.toLowerCase().includes('t.me/');
+    
+    if (!isEmail && !isTelegram) {
+        alert('Введите корректный email (name@domain.com) или Telegram (@username)');
+        return;
+    }
     
     const email = "Demon.osipov2011@yandex.ru";
-    // 3. encodeURIComponent защищает от Email Header Injection
     const subject = encodeURIComponent("Заявка с сайта: " + nameRaw);
     const body = encodeURIComponent("Имя: " + nameRaw + "\nКонтакт: " + contactRaw + "\n\nОписание проекта:\n" + messageRaw);
     
     window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
     
-    const result = document.getElementById('result');
+    // 5. Показываем результат с экранированными данными (защита от XSS)
+    const name = escapeHtml(nameRaw);
+    const contact = escapeHtml(contactRaw);
+    const message = escapeHtml(messageRaw);
+    
     result.className = "p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400";
-    // Безопасная вставка с использованием экранированных переменных
-    result.innerHTML = '<p class="font-semibold mb-2">Заявка готова!</p><p class="mb-3">Если почта не открылась, скопируйте данные:</p><div class="bg-slate-800 p-3 rounded text-left text-xs mb-3 font-mono break-words">Имя: ' + name + '<br>Контакт: ' + contact + '<br><br>Проект:<br>' + message.replace(/ /g, '<br>') + '</div><button onclick="copyText()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm text-white w-full mt-2 transition">📋 Скопировать данные</button>';
+    result.innerHTML = '<p class="font-semibold mb-2">✅ Заявка готова!</p><p class="mb-3 text-xs">Если почта не открылась, скопируйте данные:</p><div class="bg-slate-800 p-3 rounded-lg text-left text-xs mb-3 font-mono break-all">Имя: ' + name + '<br>Контакт: ' + contact + '<br><br>Проект:<br>' + message.replace(/\n/g, '<br>') + '</div><button onclick="copyText()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm text-white w-full transition">📋 Скопировать</button>';
     result.classList.remove('hidden');
 }
 
@@ -82,8 +134,14 @@ function copyText() {
     const contact = document.getElementById('contact').value;
     const message = document.getElementById('message').value;
     const text = "Имя: " + name + "\nКонтакт: " + contact + "\n\nОписание проекта:\n" + message;
-    navigator.clipboard.writeText(text).then(() => alert('✅ Скопировано! Отправьте в Telegram или почту.'));
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✅ Скопировано! Отправьте в Telegram или почту.');
+    }).catch(() => {
+        alert('Не удалось скопировать. Скопируйте вручную.');
+    });
 }
 </script>
+
 </body>
 </html>
