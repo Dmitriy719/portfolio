@@ -2,7 +2,8 @@
 <html lang="ru" class="scroll-smooth">
 <head><style>[x-cloak]{display:none!important}</style>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmitriy | Fullstack Разработчик</title>
     <meta name="description" content="Создаю сайты, веб-приложения, Telegram-ботов, автоматизацию и ИИ-решения.">
@@ -169,10 +170,10 @@
 </head>
 <body class="bg-darker text-slate-200 font-sans antialiased" x-data="{ mobileMenuOpen: false, modalOpen: false, modalContent: '', faqActive: null }">
 
-    <!-- Интерактивный фон -->
+    
     <div id="cursorGlow" class="cursor-glow"></div>
 
-    <!-- Навигация -->
+    
     <nav class="fixed w-full bg-darker/80 backdrop-blur-xl border-b border-slate-800/50 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white tracking-tighter">&lt;Dev /&gt;</a>
@@ -198,7 +199,7 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    
     <section class="min-h-screen pt-24 pb-12 px-4 relative">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20 glow fade-in">
@@ -229,7 +230,7 @@
                     </div>
                 </div>
 
-                <!-- Счётчики -->
+                
                 <div class="md:col-span-2 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col justify-center fade-in">
                     <div class="text-5xl font-extrabold gradient-text mb-2 counter" data-target="50" data-suffix="+">0</div>
                     <div class="text-sm text-slate-400">Завершённых проектов</div>
@@ -240,7 +241,7 @@
                     <div class="text-sm text-slate-400">Лет в разработке</div>
                 </div>
 
-                <!-- Стек -->
+                
                 <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <h3 class="text-sm font-semibold text-slate-500 mb-4 tracking-wider">СТЕК ТЕХНОЛОГИЙ</h3>
                     <div class="flex flex-wrap gap-2">
@@ -255,7 +256,7 @@
                     </div>
                 </div>
 
-                <!-- Статус -->
+                
                 <div class="md:col-span-3 bento-card p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-3xl fade-in">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -267,7 +268,7 @@
         </div>
     </section>
 
-    <!-- БЕГУЩАЯ СТРОКА ТЕХНОЛОГИЙ -->
+    
     <section class="py-12 border-y border-slate-800 overflow-hidden bg-dark/30">
         <div class="flex whitespace-nowrap">
             <div class="marquee-track flex gap-12 items-center text-2xl md:text-3xl font-bold text-slate-700">
@@ -291,7 +292,7 @@
         </div>
     </section>
 
-    <!-- ОБО МНЕ -->
+    
     <section id="about" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 fade-in">
@@ -320,7 +321,7 @@
                     <div class="text-xs text-slate-500">Постоянно учусь новому</div>
                 </div>
 
-                <!-- Прогресс-бары навыков -->
+                
                 <div class="md:col-span-3 bento-card p-6 bg-slate-900 border border-slate-800 rounded-3xl fade-in">
                     <div class="text-3xl mb-3">⚡</div>
                     <h3 class="text-lg font-bold text-white mb-4">Уровень владения</h3>
@@ -358,7 +359,7 @@
         </div>
     </section>
 
-    <!-- УСЛУГИ -->
+    
     <section id="services" class="py-24 px-4 bg-dark/50">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 fade-in">
@@ -391,15 +392,15 @@
     </section>
 
 
-    <!-- 🔥 ГОРЯЧАЯ УСЛУГА: ЭДО / ЭТрН -->
+    
     <section id="edo" class="py-24 px-4 relative overflow-hidden">
-        <!-- Фоновые эффекты -->
+        
         <div class="absolute inset-0 bg-gradient-to-br from-orange-950/20 via-red-950/10 to-darker"></div>
         <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
         
         <div class="max-w-5xl mx-auto relative z-10">
-            <!-- Предупреждающий баннер -->
+            
             <div class="mb-8 p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-2xl fade-in">
                 <div class="flex items-center gap-3 flex-wrap">
                     <span class="text-2xl">⚠️</span>
@@ -407,7 +408,7 @@
                         <div class="text-orange-400 font-bold text-sm tracking-wider">ВНИМАНИЕ: ЗАКОН ВСТУПАЕТ В СИЛУ</div>
                         <div class="text-white text-lg font-semibold">С 1 сентября 2026 года бумажные ТрН запрещены</div>
                     </div>
-                    <!-- Таймер обратного отсчёта -->
+                    
                     <div id="countdown" class="flex gap-2 text-center">
                         <div class="bg-darker/80 border border-orange-500/30 rounded-lg px-3 py-2 min-w-[60px]">
                             <div id="days" class="text-2xl font-bold text-orange-400">--</div>
@@ -425,7 +426,7 @@
                 </div>
             </div>
 
-            <!-- Заголовок -->
+            
             <div class="text-center mb-12 fade-in">
                 <div class="inline-block px-4 py-1.5 mb-4 text-xs font-bold text-orange-400 bg-orange-500/10 border border-orange-500/30 rounded-full tracking-wider">
                     🔥 АКТАУЛЬНО В 2026 ГОДУ
@@ -439,9 +440,9 @@
                 </p>
             </div>
 
-            <!-- Основной контент -->
+            
             <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <!-- Что я делаю -->
+                
                 <div class="bento-card p-8 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-3xl hover:border-orange-500/50 transition fade-in">
                     <div class="text-4xl mb-4">🛠️</div>
                     <h3 class="text-2xl font-bold text-white mb-5">Что я делаю</h3>
@@ -465,7 +466,7 @@
                     </ul>
                 </div>
 
-                <!-- Почему я -->
+                
                 <div class="bento-card p-8 bg-gradient-to-br from-orange-950/30 to-red-950/30 backdrop-blur border border-orange-500/30 rounded-3xl hover:border-orange-500/60 transition fade-in">
                     <div class="text-4xl mb-4">💎</div>
                     <h3 class="text-2xl font-bold text-white mb-5">Почему стоит обратиться ко мне</h3>
@@ -495,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- Операторы ЭДО -->
+            
             <div class="mb-8 fade-in">
                 <div class="p-6 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-3xl">
                     <h3 class="text-lg font-bold text-white mb-4 text-center">Работаю с операторами ЭДО:</h3>
@@ -512,7 +513,7 @@
                 </div>
             </div>
 
-            <!-- CTA -->
+            
             <div class="text-center fade-in">
                 <div class="inline-block p-8 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/40 rounded-3xl max-w-2xl">
                     <div class="text-3xl mb-3">🎁</div>
@@ -530,7 +531,7 @@
         </div>
     </section>
 
-    <!-- АВТОМАТИЗАЦИЯ И ИИ -->
+    
     <section id="ai-automation" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 fade-in">
@@ -590,7 +591,7 @@
         </div>
     </section>
 
-    <!-- ПРОЦЕСС РАБОТЫ -->
+    
     <section id="process" class="py-24 px-4 bg-dark/50">
         <div class="max-w-5xl mx-auto">
             <div class="mb-16 text-center fade-in">
@@ -639,7 +640,7 @@
         </div>
     </section>
 
-    <!-- ПОРТФОЛИО -->
+    
     <section id="portfolio" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 fade-in">
@@ -705,7 +706,7 @@
         </div>
     </section>
 
-    <!-- ОТЗЫВЫ -->
+    
     <section id="reviews" class="py-24 px-4 bg-dark/50">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 text-center fade-in">
@@ -750,7 +751,7 @@
         </div>
     </section>
 
-    <!-- БЛОГ -->
+    
     <section id="blog" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12 fade-in">
@@ -780,7 +781,7 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    
     <section id="faq" class="py-24 px-4 bg-dark/50">
         <div class="max-w-4xl mx-auto">
             <div class="mb-12 fade-in">
@@ -860,7 +861,7 @@
         </div>
     </section>
 
-    <!-- КОНТАКТЫ -->
+    
     <section id="contact" class="py-24 px-4">
         <div class="max-w-4xl mx-auto">
             <div class="mb-12 text-center fade-in">
@@ -892,7 +893,7 @@
     </section>
 
 
-    <!-- CHANGELOG -->
+    
     <section id="changelog" class="py-24 px-4 bg-dark/50">
         <div class="max-w-4xl mx-auto">
             <div class="mb-12 fade-in">
@@ -951,18 +952,18 @@
         </div>
     </section>
 
-    <!-- Футер -->
+    
     <footer class="py-8 px-4 border-t border-slate-800 text-center text-slate-500 text-sm">
         <p>© 2026 &lt;Dev /&gt; — Создано с помощью кода и кофе ☕</p>
         <p class="mt-2 text-xs">Версия 1.6.0 • Последнее обновление: 28 августа 2026</p>
     </footer>
 
-    <!-- Кнопка наверх -->
+    
     <div id="scrollTop" class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
     </div>
 
-    <!-- Модальное окно -->
+    
     <div x-show="modalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4" style="display: none;">
         <div @click="modalOpen = false" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
         <div class="relative bg-slate-900 border border-slate-700 rounded-3xl p-8 max-w-lg w-full shadow-2xl" @click.away="modalOpen = false" x-transition>
