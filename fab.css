@@ -1,2 +1,2 @@
-.fab-telegram { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #0088cc, #00aaff); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; animation: pulse-telegram 2s infinite; }
+.fab-telegram { position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #0088cc, #00aaff); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; animation: pulse-telegram 2s infinite; }
 @keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 136, 204, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); } }
