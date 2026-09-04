@@ -181,6 +181,7 @@
 
 <link rel="stylesheet" href="cyberpunk.css">
 </head>
+<div id="scrollProgress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);width:0%;z-index:9999;transition:width 0.1s;"></div>
 <body class="bg-darker text-slate-200 font-sans antialiased" x-data="{ mobileMenuOpen: false, modalOpen: false, modalContent: '', faqActive: null }">
 
     
@@ -1205,5 +1206,12 @@ function toggleMenu() {
 }
 </script>
 <script src="type.js"></script>
+<script>window.addEventListener("scroll", () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById("scrollProgress").style.width = scrolled + "%";
+});
+</script>
 </body>
 </html>
