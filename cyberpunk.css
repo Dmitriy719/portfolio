@@ -1,0 +1,8 @@
+/* Киберпанк-тема */
+.neon-text { color: #0ff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; }
+.neon-pink { color: #f0f; text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; }
+.neon-border { border: 2px solid #0ff; box-shadow: 0 0 10px #0ff, inset 0 0 10px #0ff; }
+.neon-btn { background: linear-gradient(45deg, #f0f, #0ff); box-shadow: 0 0 20px #f0f, 0 0 40px #0ff; }
+.glitch { position: relative; animation: glitch 1s infinite; }
+@keyframes glitch { 0%, 100% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } }
+.cyber-card { background: rgba(0, 255, 255, 0.05); border: 1px solid #0ff; box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
