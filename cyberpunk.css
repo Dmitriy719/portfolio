@@ -6,3 +6,5 @@
 .glitch { position: relative; animation: glitch 1s infinite; }
 @keyframes glitch { 0%, 100% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } }
 .cyber-card { background: rgba(0, 255, 255, 0.05); border: 1px solid #0ff; box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+.cursor-blink { display: inline-block; width: 3px; height: 1.2em; background: #0ff; margin-left: 4px; animation: blink 1s infinite; vertical-align: middle; }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }

@@ -180,6 +180,7 @@
 
 
 <link rel="stylesheet" href="cyberpunk.css">
+<link rel="stylesheet" href="fab.css">
 </head>
 <div id="scrollProgress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);width:0%;z-index:9999;transition:width 0.1s;"></div>
 <body class="bg-darker text-slate-200 font-sans antialiased" x-data="{ mobileMenuOpen: false, modalOpen: false, modalContent: '', faqActive: null }">
@@ -230,7 +231,7 @@
                         <h1 class="text-4xl md:text-6xl font-extrabold neon-text leading-tight mb-4 glitch">
                             Привет, я <span class="gradient-text">Дмитрий</span>
                         </h1>
-                        <p class="text-lg md:text-xl text-slate-400 mb-2 max-w-xl">Я создаю <span class="typed-text gradient-text font-bold" style="min-height: 1.5em;"></span></p><p class="text-slate-400 mb-6 max-w-xl">
+                        <p class="text-lg md:text-xl text-slate-400 mb-2 max-w-xl">Я создаю <span class="typed-text gradient-text font-bold" style="min-height: 1.5em;"></span><span class="cursor-blink"></span></p><p class="text-slate-400 mb-6 max-w-xl">
                             Fullstack-разработчик. Превращаю идеи в быстрые сайты, удобные веб-приложения, умных ботов и ИИ-решения.
                         </p>
                         <div class="flex flex-wrap gap-3">
@@ -1213,5 +1214,7 @@ function toggleMenu() {
   document.getElementById("scrollProgress").style.width = scrolled + "%";
 });
 </script>
+<a href="https://t.me/Middle2024" class="fab-telegram" title="Написать в Telegram"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg></a>
+
 </body>
 </html>
