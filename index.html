@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
-/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
-.creature-svg { display: none !important; }
+
 <head><style>[x-cloak]{display:none!important}</style>
     <meta charset="UTF-8">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -179,8 +178,7 @@
         }
         /* Счётчик */
         .counter { font-variant-numeric: tabular-nums; }
-/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
-.creature-svg { display: none !important; }
+
     </style>
 
 
@@ -317,7 +315,7 @@
     <!-- Секция Дракон и Тигр -->
     
 <!-- Кнопка управления звуком -->
-<div class="fixed bottom-24 right-6 z-50">
+<div class="fixed bottom-32 right-6 z-40">
     <button id="soundToggle" class="bg-slate-900 border-2 border-cyan-500 text-cyan-400 px-4 py-2 rounded-full hover:bg-cyan-500 hover:text-white transition-all shadow-lg shadow-cyan-500/50 text-sm font-bold">
         🔊 Звук ВКЛ
     </button>
@@ -1441,8 +1439,7 @@ function toggleMenu() {
 @keyframes cyber-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes cyber-glow { 0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 5px #00ffff); } 50% { opacity: 1; filter: drop-shadow(0 0 15px #ff00ff); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
-.creature-svg { display: none !important; }
+
 </style>
 
 
@@ -1483,8 +1480,7 @@ function toggleMenu() {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
-.creature-svg { display: none !important; }
+
 </style>
 
 
@@ -1639,8 +1635,7 @@ function toggleMenu() {
     display: flex;
     flex-direction: column;
 }
-/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
-.creature-svg { display: none !important; }
+
 </style>
 
 
@@ -1732,7 +1727,7 @@ if (soundToggle) {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 10;
+    z-index: 3;
     overflow: hidden;
     border-radius: 1.5rem;
 }
@@ -1785,10 +1780,6 @@ if (soundToggle) {
     height: 100%;
 }
 
-/* СКРЫВАЕМ СТАРЫЙ SVG-СИЛУЭТ */
-.creature-svg {
-    display: none !important;
-}
 
 /* МОЛНИИ ПОВЕРХ PNG */
 .creature-lightning-svg {
@@ -1818,6 +1809,9 @@ if (soundToggle) {
 @keyframes lightningDraw {
     to { stroke-dashoffset: 0; }
 }
+
+/* Скрываем старый SVG-силуэт */
+.creature-svg { display: none !important; }
 </style>
 </body>
 </html>
