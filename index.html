@@ -1547,14 +1547,27 @@ function toggleMenu() {
     to { stroke-dashoffset: 0; }
 }
 
-/* PNG изображение (когда загрузишь) */
+/* PNG изображение с полными анимациями */
 .creature-png {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    animation: creatureFloat 6s ease-in-out infinite;
+    object-position: center;
+    animation: creatureFloat 6s ease-in-out infinite, creaturePulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
+    z-index: 1;
+}
+
+.dragon-card .creature-png {
+    animation: creatureFloat 6s ease-in-out infinite, dragonPulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.6));
+}
+
+.tiger-card .creature-png {
+    animation: creatureFloat 6s ease-in-out infinite 0.5s, tigerPulse 4s ease-in-out infinite 0.5s;
+    filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.6));
 }
 
 /* Информация */
