@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
+/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
+.creature-svg { display: none !important; }
 <head><style>[x-cloak]{display:none!important}</style>
     <meta charset="UTF-8">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -177,6 +179,8 @@
         }
         /* Счётчик */
         .counter { font-variant-numeric: tabular-nums; }
+/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
+.creature-svg { display: none !important; }
     </style>
 
 
@@ -355,6 +359,20 @@
                                 <path d="M 170 70 L 180 50 L 175 65 L 185 45" fill="none" stroke="#00ffff" stroke-width="1.5" class="lightning" opacity="0.8"/>
                                 <path d="M 50 130 L 40 150 L 45 135 L 35 155" fill="none" stroke="#00ffff" stroke-width="1.5" class="lightning" opacity="0.6"/>
                             </svg>
+                            <!-- PNG Тигра -->
+                            <img src="images/tiger.png" alt="Тигр" class="creature-png" />
+                            <!-- SVG-молнии поверх -->
+                            <svg class="creature-lightning-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 160 85 L 170 65 L 165 80 L 175 60" fill="none" stroke="#a855f7" stroke-width="2" class="lightning-bolt" opacity="0.9"/>
+                                <path d="M 70 145 L 60 165 L 65 150 L 55 170" fill="none" stroke="#a855f7" stroke-width="2" class="lightning-bolt" opacity="0.7"/>
+                            </svg>
+                            <!-- PNG Дракона -->
+                            <img src="images/dragon.png" alt="Дракон" class="creature-png" />
+                            <!-- SVG-молнии поверх -->
+                            <svg class="creature-lightning-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 170 70 L 180 50 L 175 65 L 185 45" fill="none" stroke="#00ffff" stroke-width="2" class="lightning-bolt" opacity="0.9"/>
+                                <path d="M 50 130 L 40 150 L 45 135 L 35 155" fill="none" stroke="#00ffff" stroke-width="2" class="lightning-bolt" opacity="0.7"/>
+                            </svg>
                             <!-- Placeholder для PNG (раскомментируй когда загрузишь файлы) -->
                             <img src="images/dragon.png" alt="Дракон" class="creature-png" />
                         </div>
@@ -403,6 +421,20 @@
                                 <!-- Молнии -->
                                 <path d="M 160 85 L 170 65 L 165 80 L 175 60" fill="none" stroke="#a855f7" stroke-width="1.5" class="lightning" opacity="0.8"/>
                                 <path d="M 70 145 L 60 165 L 65 150 L 55 170" fill="none" stroke="#a855f7" stroke-width="1.5" class="lightning" opacity="0.6"/>
+                            </svg>
+                            <!-- PNG Тигра -->
+                            <img src="images/tiger.png" alt="Тигр" class="creature-png" />
+                            <!-- SVG-молнии поверх -->
+                            <svg class="creature-lightning-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 160 85 L 170 65 L 165 80 L 175 60" fill="none" stroke="#a855f7" stroke-width="2" class="lightning-bolt" opacity="0.9"/>
+                                <path d="M 70 145 L 60 165 L 65 150 L 55 170" fill="none" stroke="#a855f7" stroke-width="2" class="lightning-bolt" opacity="0.7"/>
+                            </svg>
+                            <!-- PNG Дракона -->
+                            <img src="images/dragon.png" alt="Дракон" class="creature-png" />
+                            <!-- SVG-молнии поверх -->
+                            <svg class="creature-lightning-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 170 70 L 180 50 L 175 65 L 185 45" fill="none" stroke="#00ffff" stroke-width="2" class="lightning-bolt" opacity="0.9"/>
+                                <path d="M 50 130 L 40 150 L 45 135 L 35 155" fill="none" stroke="#00ffff" stroke-width="2" class="lightning-bolt" opacity="0.7"/>
                             </svg>
                             <!-- Placeholder для PNG -->
                             <img src="images/tiger.png" alt="Тигр" class="creature-png" />
@@ -1383,6 +1415,8 @@ function toggleMenu() {
 @keyframes cyber-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes cyber-glow { 0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 5px #00ffff); } 50% { opacity: 1; filter: drop-shadow(0 0 15px #ff00ff); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
+.creature-svg { display: none !important; }
 </style>
 
 
@@ -1423,6 +1457,8 @@ function toggleMenu() {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
+.creature-svg { display: none !important; }
 </style>
 
 
@@ -1577,6 +1613,8 @@ function toggleMenu() {
     display: flex;
     flex-direction: column;
 }
+/* Скрываем старый SVG-силуэт, чтобы не просвечивал */
+.creature-svg { display: none !important; }
 </style>
 
 </body>
