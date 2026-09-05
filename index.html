@@ -1651,48 +1651,23 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 function playDragonRoar() {
     if (!soundEnabled) return;
-    
-    // Низкий гул (основа рёва)
-    const osc1 = audioContext.createOscillator();
-    const gain1 = audioContext.createGain();
-    osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(60, audioContext.currentTime);
-    osc1.frequency.linearRampToValueAtTime(40, audioContext.currentTime + 1.5);
-    gain1.gain.setValueAtTime(0, audioContext.currentTime);
-    gain1.gain.linearRampToValueAtTime(0.6, audioContext.currentTime + 0.2);
-    gain1.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
-    osc1.connect(gain1);
-    gain1.connect(audioContext.destination);
-    osc1.start(audioContext.currentTime);
-    osc1.stop(audioContext.currentTime + 1.5);
-    
-    // Шипение (добавляет "живости")
-    const bufferSize = audioContext.sampleRate * 1.5;
-    const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
-    }
-    const noise = audioContext.createBufferSource();
-    noise.buffer = buffer;
-    const noiseFilter = audioContext.createBiquadFilter();
-    noiseFilter.type = 'lowpass';
-    noiseFilter.frequency.value = 800;
-    const noiseGain = audioContext.createGain();
-    noiseGain.gain.setValueAtTime(0, audioContext.currentTime);
-    noiseGain.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.1);
-    noiseGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
-    noise.connect(noiseFilter);
-    noiseFilter.connect(noiseGain);
-    noiseGain.connect(audioContext.destination);
-    noise.start(audioContext.currentTime);
+    const roar = new Audio('https://assets.mixkit.co/active_storage/sfx/2473/2473-preview.mp3');
+    roar.volume = 0.6;
+    roar.play().catch(e => console.log('Dragon sound failed:', e));
+}
+
+function playTigerGrowl() {
+    if (!soundEnabled) return;
+    const growl = new Audio('https://assets.mixkit.co/active_storage/sfx/2470/2470-preview.mp3');
+    growl.volume = 0.5;
+    growl.play().catch(e => console.log('Tiger sound failed:', e));
+}
 }
 
 function playTigerGrowl() {
     if (!soundEnabled) return;
     
     // Средний рык
-    const osc1 = audioContext.createOscillator();
     const gain1 = audioContext.createGain();
     osc1.type = 'sawtooth';
     osc1.frequency.setValueAtTime(120, audioContext.currentTime);
@@ -1706,15 +1681,9 @@ function playTigerGrowl() {
     osc1.stop(audioContext.currentTime + 0.8);
     
     // Шум для резкости
-    const bufferSize = audioContext.sampleRate * 0.8;
-    const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-    const data = buffer.getChannelData(0);
     for (let i = 0; i < bufferSize; i++) {
         data[i] = Math.random() * 2 - 1;
     }
-    const noise = audioContext.createBufferSource();
-    noise.buffer = buffer;
-    const noiseFilter = audioContext.createBiquadFilter();
     noiseFilter.type = 'bandpass';
     noiseFilter.frequency.value = 1500;
     const noiseGain = audioContext.createGain();
