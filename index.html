@@ -1642,71 +1642,63 @@ function toggleMenu() {
 <script>
 // Управление звуком
 let soundEnabled = true;
+let audioUnlocked = false;
+
 const soundToggle = document.getElementById('soundToggle');
 const dragonCard = document.querySelector('.dragon-card');
 const tigerCard = document.querySelector('.tiger-card');
 
-// Создаём аудио контекст
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+// Предзагрузка звуков
+const dragonRoar = new Audio('https://assets.mixkit.co/active_storage/sfx/2473/2473-preview.mp3');
+const tigerGrowl = new Audio('https://assets.mixkit.co/active_storage/sfx/2470/2470-preview.mp3');
+dragonRoar.volume = 0.6;
+tigerGrowl.volume = 0.5;
 
-function playDragonRoar() {
-    if (!soundEnabled) return;
-    const roar = new Audio('https://assets.mixkit.co/active_storage/sfx/2473/2473-preview.mp3');
-    roar.volume = 0.6;
-    roar.play().catch(e => console.log('Dragon sound failed:', e));
-}
-
-function playTigerGrowl() {
-    if (!soundEnabled) return;
-    const growl = new Audio('https://assets.mixkit.co/active_storage/sfx/2470/2470-preview.mp3');
-    growl.volume = 0.5;
-    growl.play().catch(e => console.log('Tiger sound failed:', e));
-}
-}
-
-function playTigerGrowl() {
-    if (!soundEnabled) return;
-    
-    // Средний рык
-    const gain1 = audioContext.createGain();
-    osc1.type = 'sawtooth';
-    osc1.frequency.setValueAtTime(120, audioContext.currentTime);
-    osc1.frequency.exponentialRampToValueAtTime(70, audioContext.currentTime + 0.8);
-    gain1.gain.setValueAtTime(0, audioContext.currentTime);
-    gain1.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.1);
-    gain1.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
-    osc1.connect(gain1);
-    gain1.connect(audioContext.destination);
-    osc1.start(audioContext.currentTime);
-    osc1.stop(audioContext.currentTime + 0.8);
-    
-    // Шум для резкости
-    for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
+// Разблокировка аудио при первом клике (требование всех современных браузеров)
+function unlockAudio() {
+    if (!audioUnlocked) {
+        audioUnlocked = true;
+        dragonRoar.play().then(() => {
+            dragonRoar.pause();
+            dragonRoar.currentTime = 0;
+        }).catch(() => {});
     }
-    noiseFilter.type = 'bandpass';
-    noiseFilter.frequency.value = 1500;
-    const noiseGain = audioContext.createGain();
-    noiseGain.gain.setValueAtTime(0, audioContext.currentTime);
-    noiseGain.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.05);
-    noiseGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
-    noise.connect(noiseFilter);
-    noiseFilter.connect(noiseGain);
-    noiseGain.connect(audioContext.destination);
-    noise.start(audioContext.currentTime);
+}
+document.addEventListener('click', unlockAudio, { once: true });
+document.addEventListener('touchstart', unlockAudio, { once: true });
+
+// Функции воспроизведения
+function playDragonRoar() {
+    if (!soundEnabled || !audioUnlocked) return;
+    const sound = dragonRoar.cloneNode();
+    sound.play().catch(e => console.log('Dragon audio blocked'));
 }
 
+function playTigerGrowl() {
+    if (!soundEnabled || !audioUnlocked) return;
+    const sound = tigerGrowl.cloneNode();
+    sound.play().catch(e => console.log('Tiger audio blocked'));
+}
+
+// Привязка событий к карточкам
 if (dragonCard) dragonCard.addEventListener('mouseenter', playDragonRoar);
 if (tigerCard) tigerCard.addEventListener('mouseenter', playTigerGrowl);
 
+// Логика кнопки переключения
 if (soundToggle) {
-    soundToggle.addEventListener('click', () => {
+    soundToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Важно: чтобы клик по кнопке не триггерил другие события
         soundEnabled = !soundEnabled;
-        soundToggle.textContent = soundEnabled ? '🔊 Звук ВКЛ' : '🔇 Звук ВЫКЛ';
-        soundToggle.classList.toggle('border-cyan-500');
-        soundToggle.classList.toggle('border-red-500');
-        soundToggle.classList.toggle('text-cyan-400');
-        soundToggle.classList.toggle('text-red-400');
+        
+        if (soundEnabled) {
+            soundToggle.textContent = '🔊 Звук ВКЛ';
+            soundToggle.classList.remove('border-red-500', 'text-red-400');
+            soundToggle.classList.add('border-cyan-500', 'text-cyan-400');
+        } else {
+            soundToggle.textContent = '🔇 Звук ВЫКЛ';
+            soundToggle.classList.remove('border-cyan-500', 'text-cyan-400');
+            soundToggle.classList.add('border-red-500', 'text-red-400');
+        }
     });
 }
 </script>
