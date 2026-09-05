@@ -1648,48 +1648,119 @@ const soundToggle = document.getElementById('soundToggle');
 const dragonCard = document.querySelector('.dragon-card');
 const tigerCard = document.querySelector('.tiger-card');
 
-// Предзагрузка звуков
-const dragonRoar = new Audio('https://assets.mixkit.co/active_storage/sfx/2473/2473-preview.mp3');
-const tigerGrowl = new Audio('https://assets.mixkit.co/active_storage/sfx/2470/2470-preview.mp3');
-dragonRoar.volume = 0.6;
-tigerGrowl.volume = 0.5;
-
-// Разблокировка аудио при первом клике (требование всех современных браузеров)
+// Разблокировка аудио при первом клике
 function unlockAudio() {
     if (!audioUnlocked) {
         audioUnlocked = true;
-        dragonRoar.play().then(() => {
-            dragonRoar.pause();
-            dragonRoar.currentTime = 0;
-        }).catch(() => {});
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        osc.connect(ctx.destination);
+        osc.start();
+        osc.stop();
     }
 }
 document.addEventListener('click', unlockAudio, { once: true });
 document.addEventListener('touchstart', unlockAudio, { once: true });
 
-// Функции воспроизведения
+// Продвинутый процедурный рёв дракона (Бас + Шум)
 function playDragonRoar() {
     if (!soundEnabled || !audioUnlocked) return;
-    const sound = dragonRoar.cloneNode();
-    sound.play().catch(e => console.log('Dragon audio blocked'));
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const t = ctx.currentTime;
+
+    // 1. Низкочастотный бас (вибрация)
+    const subOsc = ctx.createOscillator();
+    const subGain = ctx.createGain();
+    subOsc.type = 'sine';
+    subOsc.frequency.setValueAtTime(70, t);
+    subOsc.frequency.exponentialRampToValueAtTime(35, t + 1.5);
+    subGain.gain.setValueAtTime(0, t);
+    subGain.gain.linearRampToValueAtTime(0.8, t + 0.1);
+    subGain.gain.exponentialRampToValueAtTime(0.01, t + 1.5);
+    subOsc.connect(subGain);
+    subGain.connect(ctx.destination);
+    subOsc.start(t);
+    subOsc.stop(t + 1.5);
+
+    // 2. Шум рыка (голосовые связки)
+    const bufferSize = ctx.sampleRate * 1.5;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+    
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.Q.value = 8; // Резонанс для "живого" звучания
+    filter.frequency.setValueAtTime(800, t);
+    filter.frequency.exponentialRampToValueAtTime(150, t + 1.2);
+    
+    const noiseGain = ctx.createGain();
+    noiseGain.gain.setValueAtTime(0, t);
+    noiseGain.gain.linearRampToValueAtTime(0.6, t + 0.05);
+    noiseGain.gain.exponentialRampToValueAtTime(0.01, t + 1.5);
+    
+    noise.connect(filter);
+    filter.connect(noiseGain);
+    noiseGain.connect(ctx.destination);
+    noise.start(t);
 }
 
+// Продвинутый процедурный рык тигра (Более резкий и короткий)
 function playTigerGrowl() {
     if (!soundEnabled || !audioUnlocked) return;
-    const sound = tigerGrowl.cloneNode();
-    sound.play().catch(e => console.log('Tiger audio blocked'));
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const t = ctx.currentTime;
+
+    // 1. Средний бас
+    const subOsc = ctx.createOscillator();
+    const subGain = ctx.createGain();
+    subOsc.type = 'sawtooth';
+    subOsc.frequency.setValueAtTime(120, t);
+    subOsc.frequency.exponentialRampToValueAtTime(60, t + 0.8);
+    subGain.gain.setValueAtTime(0, t);
+    subGain.gain.linearRampToValueAtTime(0.5, t + 0.05);
+    subGain.gain.exponentialRampToValueAtTime(0.01, t + 0.8);
+    subOsc.connect(subGain);
+    subGain.connect(ctx.destination);
+    subOsc.start(t);
+    subOsc.stop(t + 0.8);
+
+    // 2. Резкий шум
+    const bufferSize = ctx.sampleRate * 0.8;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+    
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.Q.value = 5;
+    filter.frequency.setValueAtTime(1200, t);
+    filter.frequency.exponentialRampToValueAtTime(300, t + 0.6);
+    
+    const noiseGain = ctx.createGain();
+    noiseGain.gain.setValueAtTime(0, t);
+    noiseGain.gain.linearRampToValueAtTime(0.4, t + 0.02);
+    noiseGain.gain.exponentialRampToValueAtTime(0.01, t + 0.8);
+    
+    noise.connect(filter);
+    filter.connect(noiseGain);
+    noiseGain.connect(ctx.destination);
+    noise.start(t);
 }
 
-// Привязка событий к карточкам
+// Привязка событий
 if (dragonCard) dragonCard.addEventListener('mouseenter', playDragonRoar);
 if (tigerCard) tigerCard.addEventListener('mouseenter', playTigerGrowl);
 
-// Логика кнопки переключения
+// Логика кнопки
 if (soundToggle) {
     soundToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Важно: чтобы клик по кнопке не триггерил другие события
+        e.stopPropagation();
         soundEnabled = !soundEnabled;
-        
         if (soundEnabled) {
             soundToggle.textContent = '🔊 Звук ВКЛ';
             soundToggle.classList.remove('border-red-500', 'text-red-400');
