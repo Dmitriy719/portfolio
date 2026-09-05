@@ -1007,6 +1007,28 @@
             <div class="flex flex-col md:flex-row gap-4 items-start">
                 <div class="w-full md:w-3/5">
                     <a href="contact.html" class="block w-full py-3 bg-gradient-to-r from-primary to-accent hover:from-indigo-600 hover:to-purple-600 text-white font-bold text-center rounded-xl transition shadow-lg shadow-primary/25 text-lg">Написать мне →</a>
+                    <div class="mt-4 flex justify-center">
+                        <svg class="cyber-chat-icon" width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <path d="M20 30 Q20 20 30 20 L70 20 Q80 20 80 30 L80 60 Q80 70 70 70 L40 70 L30 85 L30 70 Q20 70 20 60 Z" 
+                                  fill="none" stroke="url(#neonGrad)" stroke-width="2" filter="url(#glow)" class="cyber-pulse"/>
+                            <circle cx="35" cy="45" r="3" fill="#00ffff" filter="url(#glow)" class="cyber-blink"/>
+                            <circle cx="50" cy="45" r="3" fill="#00ffff" filter="url(#glow)" class="cyber-blink" style="animation-delay: 0.2s"/>
+                            <circle cx="65" cy="45" r="3" fill="#00ffff" filter="url(#glow)" class="cyber-blink" style="animation-delay: 0.4s"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="w-full md:w-2/5 space-y-4">
                     <a href="https://t.me/@Middle2024" class="bento-card block p-6 bg-slate-900 border border-slate-800 rounded-3xl hover:border-primary/50 transition fade-in">
@@ -1236,6 +1258,16 @@ function toggleMenu() {
 });
 </script>
 <a href="https://t.me/Middle2024" class="fab-telegram" title="Написать в Telegram"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg></a>
+
+
+<style>
+.cyber-chat-icon { animation: cyber-float 3s ease-in-out infinite; }
+.cyber-pulse { animation: cyber-glow 2s ease-in-out infinite; }
+.cyber-blink { animation: blink 1.5s ease-in-out infinite; }
+@keyframes cyber-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes cyber-glow { 0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 5px #00ffff); } 50% { opacity: 1; filter: drop-shadow(0 0 15px #ff00ff); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+</style>
 
 </body>
 </html>
