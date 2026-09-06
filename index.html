@@ -314,12 +314,7 @@
     
     <!-- Секция Дракон и Тигр -->
     
-<!-- Кнопка управления звуком -->
-<div class="fixed bottom-32 right-6 z-40">
-    <button id="soundToggle" class="bg-slate-900 border-2 border-cyan-500 text-cyan-400 px-4 py-2 rounded-full hover:bg-cyan-500 hover:text-white transition-all shadow-lg shadow-cyan-500/50 text-sm font-bold">
-        🔊 Звук ВКЛ
-    </button>
-</div>
+
 
 <section id="creatures" class="py-24 px-4 bg-dark/50 overflow-hidden">
         <div class="max-w-6xl mx-auto">
@@ -1641,17 +1636,14 @@ function toggleMenu() {
 
 <script>
 // Управление звуком
-let soundEnabled = true;
-let audioUnlocked = false;
 
-const soundToggle = document.getElementById('soundToggle');
-const dragonCard = document.querySelector('.dragon-card');
-const tigerCard = document.querySelector('.tiger-card');
+
+
+
+
 
 // Разблокировка аудио при первом клике
 function unlockAudio() {
-    if (!audioUnlocked) {
-        audioUnlocked = true;
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
         osc.connect(ctx.destination);
@@ -1663,8 +1655,6 @@ document.addEventListener('click', unlockAudio, { once: true });
 document.addEventListener('touchstart', unlockAudio, { once: true });
 
 // Продвинутый процедурный рёв дракона (Бас + Шум)
-function playDragonRoar() {
-    if (!soundEnabled || !audioUnlocked) return;
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const t = ctx.currentTime;
 
@@ -1708,8 +1698,6 @@ function playDragonRoar() {
 }
 
 // Продвинутый процедурный рык тигра (Более резкий и короткий)
-function playTigerGrowl() {
-    if (!soundEnabled || !audioUnlocked) return;
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const t = ctx.currentTime;
 
@@ -1753,22 +1741,12 @@ function playTigerGrowl() {
 }
 
 // Привязка событий
-if (dragonCard) dragonCard.addEventListener('mouseenter', playDragonRoar);
-if (tigerCard) tigerCard.addEventListener('mouseenter', playTigerGrowl);
+
+
 
 // Логика кнопки
-if (soundToggle) {
-    soundToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        soundEnabled = !soundEnabled;
-        if (soundEnabled) {
-            soundToggle.textContent = '🔊 Звук ВКЛ';
-            soundToggle.classList.remove('border-red-500', 'text-red-400');
-            soundToggle.classList.add('border-cyan-500', 'text-cyan-400');
         } else {
-            soundToggle.textContent = '🔇 Звук ВЫКЛ';
-            soundToggle.classList.remove('border-cyan-500', 'text-cyan-400');
-            soundToggle.classList.add('border-red-500', 'text-red-400');
         }
     });
 }
