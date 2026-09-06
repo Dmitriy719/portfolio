@@ -1872,6 +1872,27 @@ document.addEventListener('touchstart', unlockAudio, { once: true });
 
 /* Скрываем старый SVG-силуэт */
 .creature-svg { display: none !important; }
+
+/* ИСПРАВЛЕНИЕ: Запрещаем картинкам вылезать за границы карточек */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important; /* Тёмный фон пока грузится картинка */
+    isolation: isolate !important; /* Создаёт независимый слой для каждой карточки */
+    z-index: 1;
+}
+
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict; /* Оптимизация и изоляция рендеринга */
+}
 </style>
 </body>
 </html>
