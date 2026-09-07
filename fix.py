@@ -1,5 +1,0 @@
-with open("index.html", "r", encoding="utf-8") as f: t = f.read()
-with open("pricing.html", "r", encoding="utf-8") as f: p = f.read()
-t = t.replace("<!-- ПОРТФОЛИО -->", p + "\n    <!-- ПОРТФОЛИО -->")
-with open("index.html", "w", encoding="utf-8") as f: f.write(t)
-print("PRICING INSERTED")
