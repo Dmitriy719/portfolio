@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 
-<head><style>[x-cloak]{display:none!important}</style>
+<head><style>[x-cloak]{display:none!important}
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
+}
+
+</style>
     <meta charset="UTF-8">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none';">
@@ -179,7 +200,28 @@
         /* Счётчик */
         .counter { font-variant-numeric: tabular-nums; }
 
-    </style>
+    
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
+}
+
+</style>
 
 
 <link rel="stylesheet" href="cyberpunk.css">
@@ -491,20 +533,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Карточка Telegram-бота (Гибридная) -->
-                <div class="md:col-span-3 bento-card group relative overflow-hidden rounded-3xl cyber-card hover:border-primary/50 transition fade-in">
-                    <!-- Контейнер для изображений с эффектом переключения -->
-                    <div class="h-56 bg-slate-900 relative overflow-hidden">
-                        <!-- AI Обложка (видна по умолчанию) -->
-                        <img src="bot-shop-cover.png" alt="Bot Cover" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-110" />
-                        
-                        <!-- Реальный скриншот (появляется при наведении) -->
-                        <img src="bot-shop-real.png" alt="Bot Real Interface" class="absolute inset-0 w-full h-full object-contain bg-slate-900 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" />
-                        
-                        <!-- Градиент для плавности -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>
-                    </div>
                     
                     <div class="p-6 relative z-10">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
@@ -604,20 +632,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Карточка Telegram-бота (Гибридная) -->
-                <div class="md:col-span-3 bento-card group relative overflow-hidden rounded-3xl cyber-card hover:border-primary/50 transition fade-in">
-                    <!-- Контейнер для изображений с эффектом переключения -->
-                    <div class="h-56 bg-slate-900 relative overflow-hidden">
-                        <!-- AI Обложка (видна по умолчанию) -->
-                        <img src="bot-shop-cover.png" alt="Bot Cover" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-110" />
-                        
-                        <!-- Реальный скриншот (появляется при наведении) -->
-                        <img src="bot-shop-real.png" alt="Bot Real Interface" class="absolute inset-0 w-full h-full object-contain bg-slate-900 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" />
-                        
-                        <!-- Градиент для плавности -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>
-                    </div>
                     
                     <div class="p-6 relative z-10">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
@@ -821,20 +835,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Карточка Telegram-бота (Гибридная) -->
-                <div class="md:col-span-3 bento-card group relative overflow-hidden rounded-3xl cyber-card hover:border-primary/50 transition fade-in">
-                    <!-- Контейнер для изображений с эффектом переключения -->
-                    <div class="h-56 bg-slate-900 relative overflow-hidden">
-                        <!-- AI Обложка (видна по умолчанию) -->
-                        <img src="bot-shop-cover.png" alt="Bot Cover" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-110" />
-                        
-                        <!-- Реальный скриншот (появляется при наведении) -->
-                        <img src="bot-shop-real.png" alt="Bot Real Interface" class="absolute inset-0 w-full h-full object-contain bg-slate-900 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" />
-                        
-                        <!-- Градиент для плавности -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>
-                    </div>
                     
                     <div class="p-6 relative z-10">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
@@ -1056,12 +1056,29 @@
                 <h2 class="text-3xl md:text-5xl font-bold text-white">Избранные работы</h2>
             </div>
             <div class="grid md:grid-cols-6 gap-4">
-                <!-- Карточка Лендинг -->
+                <!-- Карточка Telegram-бота (Гибридная) -->
                 <div class="md:col-span-3 bento-card group relative overflow-hidden rounded-3xl cyber-card hover:border-primary/50 transition fade-in">
                     <div class="h-56 bg-slate-900 relative overflow-hidden">
-                        <img src="project-landing-cover.png" alt="Landing Page" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                        <img src="bot-shop-cover.png" alt="Bot Cover" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-110" />
+                        <img src="bot-shop-real.png" alt="Bot Real Interface" class="absolute inset-0 w-full h-full object-contain bg-slate-900 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>
                     </div>
+                    <div class="p-6 relative z-10">
+                        <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Telegram-бот "Мой магазин"</h3>
+                        <p class="text-slate-400 mb-4">Полнофункциональный бот для управления заказами с CRM-интеграцией и админ-панелью.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 rounded-full border border-slate-700">Python</span>
+                            <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 rounded-full border border-slate-700">Aiogram</span>
+                            <span class="px-3 py-1 text-xs bg-slate-800 text-slate-300 rounded-full border border-slate-700">SQLite</span>
+                        </div>
+                        <a href="https://t.me/my_shop_orders_2024_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-5 px-4 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all duration-300 text-sm font-semibold group">
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.72-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                            Открыть в Telegram
+                        </a>
+                    </div>
+                </div>
+
                     <div class="p-6 relative z-10">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">ВЕБ-РАЗРАБОТКА</div>
                         <h3 class="text-2xl font-bold text-white mb-2">Лендинг под ключ</h3>
@@ -1073,20 +1090,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Карточка Telegram-бота (Гибридная) -->
-                <div class="md:col-span-3 bento-card group relative overflow-hidden rounded-3xl cyber-card hover:border-primary/50 transition fade-in">
-                    <!-- Контейнер для изображений с эффектом переключения -->
-                    <div class="h-56 bg-slate-900 relative overflow-hidden">
-                        <!-- AI Обложка (видна по умолчанию) -->
-                        <img src="bot-shop-cover.png" alt="Bot Cover" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-110" />
-                        
-                        <!-- Реальный скриншот (появляется при наведении) -->
-                        <img src="bot-shop-real.png" alt="Bot Real Interface" class="absolute inset-0 w-full h-full object-contain bg-slate-900 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" />
-                        
-                        <!-- Градиент для плавности -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>
-                    </div>
                     
                     <div class="p-6 relative z-10">
                         <div class="text-xs text-primary font-semibold mb-2 tracking-wider">АВТОМАТИЗАЦИЯ</div>
@@ -1625,6 +1628,27 @@ function toggleMenu() {
 @keyframes cyber-glow { 0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 5px #00ffff); } 50% { opacity: 1; filter: drop-shadow(0 0 15px #ff00ff); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
+}
+
 </style>
 
 
@@ -1664,6 +1688,27 @@ function toggleMenu() {
 @keyframes fadeInUpAnim {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
 }
 
 </style>
@@ -1819,6 +1864,27 @@ function toggleMenu() {
     flex: 1;
     display: flex;
     flex-direction: column;
+}
+
+
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
 }
 
 </style>
@@ -2083,6 +2149,27 @@ document.addEventListener('touchstart', unlockAudio, { once: true });
     z-index: 2;
     contain: strict; /* Оптимизация и изоляция рендеринга */
 }
+
+/* ЖЕСТКОЕ ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КАРТИНОК ДРАКОНА И ТИГРА */
+.creature-svg-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    background-color: #0f172a !important;
+    isolation: isolate !important;
+    z-index: 1;
+}
+.creature-png {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    z-index: 2;
+    contain: strict !important;
+}
+
 </style>
 </body>
 </html>
